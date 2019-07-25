@@ -7,25 +7,21 @@ importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js');
 
 
 workbox.core.setCacheNameDetails({ prefix: "app-tokpets-v2" });
-
-/**
- * The workboxSW.precacheAndRoute() method efficiently caches and responds to
- * requests for URLs in the manifest.
- * See https://goo.gl/S9QRab
- */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-/*
+
+
 firebase.initializeApp({
-    'messagingSenderId': 'YOUR-SENDER-ID'
+    'messagingSenderId': '1034299822340'
 });
 const messaging = firebase.messaging();
 messaging.onMessage(function (payload) {
-    console.log('Message received. ', payload);
+    console.log('fB Message received. ', payload);
 });
-*/
+
+
 
 self.addEventListener('message', function (event) {
     console.log("SW Received Message: ");
