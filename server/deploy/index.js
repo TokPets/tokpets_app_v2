@@ -14,22 +14,10 @@
 
 
 // --------------------------------------------------------- //
-// -- Require & Dependecies -------------------------------- //
-// --------------------------------------------------------- //
-const util = require("util");
-const cliColor = require("cli-color");
-const gitBranch = require("git-branch");
-const exeCommand = util.promisify(require("child_process").exec);
-// --------------------------------------------------------- //
-
-
-
-
-// --------------------------------------------------------- //
 // -- Config & Settings ------------------------------------ //
 // --------------------------------------------------------- //
-import AppBranchs from './config/branch-strategies.json';
-import AppDeploy from './class/AppDeploy.class';
+const configBranchs = require('./config/branch-strategies.json');
+const AppDeploy = require('./class/AppDeploy.class');
 // --------------------------------------------------------- //
 
 
@@ -39,7 +27,7 @@ import AppDeploy from './class/AppDeploy.class';
 // -- Main & Deploy ---------------------------------------- //
 // --------------------------------------------------------- //
 const appDeploy = new AppDeploy();
-appDeploy.setBranchs(AppBranchs);
+appDeploy.setBranchs(configBranchs);
 appDeploy.run("TokPets PWA Deploying App");
 // --------------------------------------------------------- //
 

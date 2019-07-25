@@ -1,13 +1,18 @@
-export function consoleLogTitle(title) {
+const cliColor = require("cli-color");
 
-    const titleLength = title.length;
-    const titleBarBase = '-';
-    const titleBar = titleBarBase.repeat(titleLength + 2);
+module.exports = {
+    consoleLogTitle: function (title) {
 
-    console.log('');
-    console.log(cliColor.red('-- ' + titleBar + ' --'));
-    console.log(cliColor.red('-- ' + ' ' + title + ' ' + ' --'));
-    console.log(cliColor.red('-- ' + titleBar + ' --'));
-    console.log('');
+        const titleLength = title.length;
+        const titleBarBase = '-';
+        const titleBar = titleBarBase.repeat(titleLength + 2);
 
+        console.log('');
+        console.log(cliColor.green('-- ' + titleBar + ' --'));
+        console.log(cliColor.green('-- ' + ' ' + title + ' ' + ' --'));
+        console.log(cliColor.green('-- ' + titleBar + ' --'));
+        console.log('');
+
+    }
 }
+
