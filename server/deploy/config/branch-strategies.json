@@ -1,22 +1,22 @@
 [{
 
-        "branch": "release/dev",
-        "project": "trianon-co-pwa-dev",
+        "branch": "deploy/dev",
+        "project": "app-tokpets-dev",
         "hosting-url": "https://trianon-co-pwa-dev.firebaseapp.com"
     },
     {
-        "branch": "release/test",
-        "project": "trianon-co-pwa-test",
+        "branch": "deploy/test",
+        "project": "app-tokpets-dev",
         "hosting-url": "https://trianon-co-pwa-test.firebaseapp.com"
     },
     {
-        "branch": "release/qa",
-        "project": "trianon-co-pwa-qa",
+        "branch": "deploy/qa",
+        "project": "app-tokpets-dev",
         "hosting-url": "https://trianon-co-pwa-qa.firebaseapp.com"
     },
     {
-        "branch": "release/prod",
-        "project": "trianon-co-pwa-prod",
+        "branch": "deploy/prod",
+        "project": "app-tokpets-dev",
         "hosting-url": "https://trianon-co-pwa-prod.firebaseapp.com"
     }
 ]
