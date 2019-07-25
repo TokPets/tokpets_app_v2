@@ -13,6 +13,16 @@ module.exports = {
         console.log(cliColor.green('-- ' + titleBar + ' --'));
         console.log('');
 
+    },
+
+    succesfull: function (text) {
+        console.log('');
+        console.log(cliColor.green(text));
+    },
+
+    error: function (text) {
+        console.log('');
+        console.log(' ¡¡¡ ' + cliColor.red(text) + '!!!');
     }
 }
 
