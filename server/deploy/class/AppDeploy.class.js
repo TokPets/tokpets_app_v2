@@ -23,18 +23,38 @@ class AppDeploy {
 
         logs.consoleLogTitle(initMessage);
 
-        const isCLS = await exeCommand('cls');
-        const isLBuild = await exeCommand('npm run build');
         const currentBranch = await gitBranch();
-        console.log('')
-        console.log('currentBranch ')
-        console.log(currentBranch)
-        console.log('')
-        //BUILD
-        //GET CURRENT BRANCH
-        //SET FIREBASE PROJECT
-        //FIREBASE DEPLOY
+        const currentProject = (this.branchs.filter((branch) => branch.branch === currentBranch)[0] || []);
+        const currentCommitMessage = 'Git Update on ' + currentBranch;
 
+        try {
+            const isCLS = await exeCommand(`cls`);
+            logs.succesfull('isCLS  Ok');
+
+            const isBuild = await exeCommand(`npm run build`);
+            logs.succesfull('isBuild  Ok');
+
+            const isGitAdd = await exeCommand(`git add *`);
+            logs.succesfull('isGit Add  Ok');
+
+            const isGitCommit = await exeCommand(`git commit -m "${currentCommitMessage}"`);
+            logs.succesfull('isGit Commit -m ' + currentCommitMessage + '  Ok');
+
+            const isGitPull = await exeCommand(`git pull`);
+            logs.succesfull('isGit Pull Ok');
+
+            const isGitPush = await exeCommand(`git push`);
+            logs.succesfull('isGit Push Ok');
+
+            const isChanged = await exeCommand(`firebase use ${currentProject}`);
+            logs.succesfull('isChanged OK');
+
+            const isDeployed = await exeCommand(`firebase deploy`);
+            logs.succesfull('isDeployed Ok');
+
+        } catch (error) {
+            logs.error(error);
+        }
 
     }
 }
