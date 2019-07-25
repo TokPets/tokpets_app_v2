@@ -35,10 +35,10 @@
         }]
       },
       {
-        "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|js|css|eot|otf|ttf|ttc|woff|woff2|font.css)",
+        "source": "**/*.@(js|css|jpg|jpeg|gif|png|svg|webp|js|css|eot|otf|ttf|ttc|woff|woff2|font.css)",
         "headers": [{
-          "key": "Cache-Control",
-          "value": "max-age=4800000"
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }]
       }
     ]
