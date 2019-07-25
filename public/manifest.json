@@ -1,11 +1,17 @@
 {
+  "start_url": "/",
+
   "name": "TokPets | Pet's Tracker Device ",
   "short_name": "TokPets",
-  "start_url": "/",
+
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#000000",
+
   "theme_color": "#000000",
+  "background_color": "#000000",
+
+  "gcm_sender_id": "1034299822340",
+
   "icons": [{
       "src": "./img/icons/android-chrome-192x192.png",
       "sizes": "192x192",

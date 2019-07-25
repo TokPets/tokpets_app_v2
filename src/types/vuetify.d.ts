@@ -1,2 +1,2 @@
-declare module 'vuetify'
-declare module 'vuetify/lib'
+declare module 'vuetify';
+declare module 'vuetify/lib';

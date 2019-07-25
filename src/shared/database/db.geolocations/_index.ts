@@ -25,6 +25,16 @@ export default class DBGeolocationsService {
     public getCountries(): string[] {
         return [];
     }
+    public getCities(cities: IGeocodeCity[]): string[] {
+        return [];
+    }
+
+    public setCountries(countries: IGeocodeCountry[]): any {
+
+    }
+    public setCities(cities: IGeocodeCity[]): any {
+
+    }
 
 
 

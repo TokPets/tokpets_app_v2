@@ -1,0 +1,25 @@
+{
+    "javascript.preferences.quoteStyle": "single",
+    "vetur.format.defaultFormatter.html": "none",
+    "vetur.format.defaultFormatter.css": "none",
+    "vetur.format.defaultFormatter.js": "none",
+    "vetur.format.defaultFormatter.less": "none",
+    "vetur.format.defaultFormatter.postcss": "none",
+    "vetur.format.defaultFormatter.scss": "none",
+    "vetur.format.defaultFormatter.stylus": "none",
+    "vetur.format.defaultFormatter.ts": "none",
+
+    "files.exclude": {
+        "**/.git": true, // this is a default value
+        "**/.DS_Store": true, // this is a default value
+
+        "**/node_modules": true, // this excludes all folders 
+        // named "node_modules" from 
+        // the explore tree
+
+        // alternative version
+        "node_modules": true // this excludes the folder 
+        // only from the root of
+        // your workspace 
+    }
+}

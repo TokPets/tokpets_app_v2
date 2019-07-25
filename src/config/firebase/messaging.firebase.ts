@@ -1,7 +1,12 @@
 import * as firebase from 'firebase/app';
 
 const messaging = firebase.messaging();
-messaging.usePublicVapidKey('xxxxxxx');
+const messagingPublicKey = 'BLqXfDySoK_0PkM33_Dv4-gaLHw248P4eVrDq_BSb24GGHVkOGn1rFKNGGucRqgvkSSz3dWKMLBS47r37lDp5hY';
+messaging.usePublicVapidKey(messagingPublicKey);
+
+
+
+
 messaging.requestPermission().then(() => {
     // tslint:disable-next-line: no-console
     console.log('Notification permission granted.');
