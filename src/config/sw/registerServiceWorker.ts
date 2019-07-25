@@ -4,12 +4,14 @@ import { register } from 'register-service-worker';
 import onUpdateFoundHandler from './lib/on.updateFound';
 
 if (process.env.NODE_ENV === 'production') {
+
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
       console.log(
         'App is being served from cache by a service worker.\n' +
         'For more details, visit https://goo.gl/AFskqB',
       );
+
     },
     registered() {
       console.log('Service worker has been registered.');
@@ -30,4 +32,9 @@ if (process.env.NODE_ENV === 'production') {
       console.error('Error during service worker registration:', error);
     },
   });
+
+  self.addEventListener('message', function (event) {
+    console.log("SW Received Message: " + event.data);
+  });
+
 }

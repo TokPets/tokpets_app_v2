@@ -16,9 +16,19 @@ module.exports = {
     configureWebpack: {
         optimization: {
             splitChunks: {
-                minSize: 10,
-                maxSize: 2500000,
+                minSize: 1000,
+                maxSize: 200000,
             }
+        }
+    },
+
+    pwa: {
+        // configure the workbox plugin
+        workboxPluginMode: 'InjectManifest',
+        workboxOptions: {
+            // swSrc is required in InjectManifest mode.
+            swSrc: './src/config/sw/service-worker.js',
+            // ...other Workbox options...
         }
     }
 
