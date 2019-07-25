@@ -23,34 +23,44 @@ class AppDeploy {
 
         logs.consoleLogTitle(initMessage);
 
-        const currentBranch = await gitBranch();
-        const currentProject = (this.branchs.filter((branch) => branch.branch === currentBranch)[0] || []);
-        const currentCommitMessage = 'Git Update on ' + currentBranch;
-
         try {
-            const isCLS = await exeCommand(`cls`);
-            logs.succesfull('isCLS  Ok');
+            const currentBranch = await gitBranch();
+            const currentStrategy = this.branchs.filter((branch) => branch.branch === currentBranch)[0];
+            if (currentStrategy) {
+                const currentProject = currentStrategy.project;
+                const currentCommitMessage = 'Git Update on ' + currentBranch;
 
-            const isBuild = await exeCommand(`npm run build`);
-            logs.succesfull('isBuild  Ok');
+                const isCLS = await exeCommand(`cls`);
+                logs.succesfull(' == > isCLS  Ok ...');
 
-            const isGitAdd = await exeCommand(`git add *`);
-            logs.succesfull('isGit Add  Ok');
+                const isBuild = await exeCommand(`npm run build`);
+                logs.succesfull(' == > isBuild  Ok ...');
 
-            const isGitCommit = await exeCommand(`git commit -m "${currentCommitMessage}"`);
-            logs.succesfull('isGit Commit -m ' + currentCommitMessage + '  Ok');
+                const isGitAdd = await exeCommand(`git add *`);
+                logs.succesfull(' == > isGit Add  Ok ...');
 
-            const isGitPull = await exeCommand(`git pull`);
-            logs.succesfull('isGit Pull Ok');
+                const isGitCommit = await exeCommand(`git commit -m "${currentCommitMessage}"`);
+                logs.succesfull(' == > isGit Commit -m ' + currentCommitMessage + '  Ok ...');
 
-            const isGitPush = await exeCommand(`git push`);
-            logs.succesfull('isGit Push Ok');
+                const isGitPull = await exeCommand(`git pull`);
+                logs.succesfull(' == > isGit Pull Ok ...');
 
-            const isChanged = await exeCommand(`firebase use ${currentProject}`);
-            logs.succesfull('isChanged OK');
+                const isGitPush = await exeCommand(`git push`);
+                logs.succesfull(' == > isGit Push Ok ...');
 
-            const isDeployed = await exeCommand(`firebase deploy`);
-            logs.succesfull('isDeployed Ok');
+                const isChanged = await exeCommand(`firebase use ${currentProject}`);
+                logs.succesfull(` == > isChanged OK to ${currentProject}...`);
+
+                const isDeployed = await exeCommand(`firebase deploy`);
+                logs.succesfull(' == > isDeployed Ok !!!!');
+
+                logs.succesfull('');
+                logs.succesfull(` Hosting URL: ${currentStrategy} `);
+                logs.succesfull('');
+
+            } else {
+                logs.info(' Current Branch has not any deploy strategt :v')
+            }
 
         } catch (error) {
             logs.error(error);

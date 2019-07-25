@@ -15,6 +15,11 @@ module.exports = {
 
     },
 
+    info: function (text) {
+        console.log('');
+        console.log(cliColor.yellow(text));
+    },
+
     succesfull: function (text) {
         console.log('');
         console.log(cliColor.green(text));
@@ -22,7 +27,7 @@ module.exports = {
 
     error: function (text) {
         console.log('');
-        console.log(' ¡¡¡ ' + cliColor.red(text) + '!!!');
+        console.log(cliColor.red(' ¡¡¡ ') + cliColor.red(text) + cliColor.red('!!!'));
     }
 }
 
