@@ -1,0 +1,139 @@
+[debug] [2019-07-25T17:27:31.102Z] ----------------------------------------------------------------------
+[debug] [2019-07-25T17:27:31.106Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\walla\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-07-25T17:27:31.107Z] CLI Version:   7.1.1
+[debug] [2019-07-25T17:27:31.107Z] Platform:      win32
+[debug] [2019-07-25T17:27:31.107Z] Node Version:  v10.14.1
+[debug] [2019-07-25T17:27:31.110Z] Time:          Thu Jul 25 2019 12:27:31 GMT-0500 (GMT-05:00)
+[debug] [2019-07-25T17:27:31.111Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-25T17:27:31.128Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-25T17:27:31.130Z] > authorizing via signed-in user
+[debug] [2019-07-25T17:27:31.130Z] [iam] checking project app-tokpets-dev for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2019-07-25T17:27:31.134Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/app-tokpets-dev:testIamPermissions  
+
+[debug] [2019-07-25T17:27:32.470Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-25T17:27:32.474Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/app-tokpets-dev  
+ 
+[debug] [2019-07-25T17:27:33.150Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'app-tokpets-dev'...
+[info] 
+[info] i  deploying database, storage, firestore, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] +  functions: Finished running predeploy script.
+[info] i  database: checking rules syntax...
+[debug] [2019-07-25T17:27:54.101Z] >>> HTTP REQUEST PUT https://app-tokpets-dev.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": false,
+    ".write": false
+  }
+}
+[debug] [2019-07-25T17:27:55.263Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database app-tokpets-dev is valid
+[debug] [2019-07-25T17:27:55.265Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/app-tokpets-dev  
+ 
+[debug] [2019-07-25T17:27:56.973Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking ./server/storage/storage.rules for compilation errors...
+[debug] [2019-07-25T17:27:56.975Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/app-tokpets-dev:test  
+
+[debug] [2019-07-25T17:27:57.810Z] <<< HTTP RESPONSE 200
+[info] +  storage: rules file ./server/storage/storage.rules compiled successfully
+[info] i  firestore: checking ./server/database/firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from ./server/database/firestore.indexes.json...
+[debug] [2019-07-25T17:27:57.813Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/app-tokpets-dev:test  
+
+[debug] [2019-07-25T17:27:58.528Z] <<< HTTP RESPONSE 200
+[info] +  firestore: rules file ./server/database/firestore.rules compiled successfully
+[debug] [2019-07-25T17:27:58.530Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^8.0.0",
+    "firebase-functions": "^3.1.0"
+  },
+  "devDependencies": {
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-07-25T17:27:58.531Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/app-tokpets-dev/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2019-07-25T17:27:58.531Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/app-tokpets-dev/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2019-07-25T17:27:59.926Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-25T17:28:00.146Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2019-07-25T17:28:00.147Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/app-tokpets-dev/adminSdkConfig  
+ 
+[debug] [2019-07-25T17:28:00.965Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-25T17:28:00.967Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/app-tokpets-dev/versions  
+
+[debug] [2019-07-25T17:28:02.720Z] <<< HTTP RESPONSE 500
+[debug] [2019-07-25T17:28:02.720Z] <<< HTTP RESPONSE BODY
+[error] 
+[error] Error: HTTP Error: 500, Internal error encountered.
+[debug] [2019-07-25T17:28:03.453Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Internal error encountered.",
+      "status": "INTERNAL"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Internal error encountered.",
+        "status": "INTERNAL"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Thu, 25 Jul 2019 17:28:01 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "0",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"46,43,39\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/app-tokpets-dev/versions",
+        "path": "/v1beta1/sites/app-tokpets-dev/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/app-tokpets-dev/versions"
+      },
+      "method": "POST"
+    }
+  }
+}
