@@ -34,5 +34,5 @@ self.addEventListener('message', function (event) {
 
 self.addEventListener('push', function (event) {
     console.log("SW Received PUSH: ");
-    console.log(event.data);
+    console.log(event);
 });
