@@ -28,5 +28,11 @@ messaging.onMessage(function (payload) {
 */
 
 self.addEventListener('message', function (event) {
-    console.log("SW Received Message: " + JSON.stringify(event.data));
+    console.log("SW Received Message: ");
+    console.log(event.data);
+});
+
+self.addEventListener('push', function (event) {
+    console.log("SW Received PUSH: ");
+    console.log(event.data);
 });
