@@ -20,7 +20,18 @@ const messaging = firebase.messaging();
 messaging.onMessage(function (payload) {
     console.log('fB Message received. ', payload);
 });
+messaging.setBackgroundMessageHandler(function (payload) {
+    console.log('[firebase-messaging-sw.js] Received background message ', payload);
+    // Customize notification here
+    var notificationTitle = 'Background Message Title';
+    var notificationOptions = {
+        body: 'Background Message body.',
+        icon: '/favicon.ico'
+    };
 
+    return self.registration.showNotification(notificationTitle,
+        notificationOptions);
+});
 
 
 self.addEventListener('message', function (event) {
@@ -31,4 +42,10 @@ self.addEventListener('message', function (event) {
 self.addEventListener('push', function (event) {
     console.log("SW Received PUSH: ");
     console.log(event.data.text());
+});
+
+self.addEventListener('sync', function (event) {
+    if (event.tag == 'myFirstSync') {
+        event.waitUntil(() => { console.warn(' SW Received Sync MyFirstSync') });
+    }
 });
