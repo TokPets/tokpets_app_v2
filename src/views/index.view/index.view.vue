@@ -1,6 +1,6 @@
 <template>
   <div class="view page index">
-    <h1 (click)="goToLoginSignIn()">TOK PETS</h1>
+    <h1 @click="goToLoginSignIn()">TOK PETS</h1>
     <h4>Navigator {{CurrentNavigator}}</h4>
   </div>
 </template>
