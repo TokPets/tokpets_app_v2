@@ -1,3 +1,4 @@
+/*
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
@@ -9,3 +10,4 @@ import ConfigFirebase from './config.firebase';
 
 
 firebase.initializeApp(ConfigFirebase);
+*/

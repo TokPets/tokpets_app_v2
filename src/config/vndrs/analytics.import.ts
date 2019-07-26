@@ -1,3 +1,4 @@
+/*
 import Vue from 'vue';
 import router from '../../routes/router';
 
@@ -7,4 +8,4 @@ Vue.use(VueAnalytics, {
     router,
 });
 
-
+*/

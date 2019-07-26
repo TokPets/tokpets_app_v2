@@ -28,8 +28,9 @@ export default class IndexView extends Vue {
   private mounted() {
 
 
-this.nofityMe();
+//this.nofityMe();
 
+/*
 this.CurrentNavigator = JSON.stringify((navigator as any).userAgent);
 const dbGeocodeServiceName = (this as any).$db.geolocations.getName();
 
@@ -40,11 +41,11 @@ console.warn('dbGeocodeServiceName');
 console.warn(dbGeocodeServiceName);
 console.warn('');
 console.warn('');
-
+*/
   }
 
 
-
+/*
   private nofityMe() {
     // Let's check if the browser supports notifications
   if (!('Notification' in window)) {
@@ -71,6 +72,7 @@ console.warn('');
   // At last, if the user has denied notifications, and you
   // want to be respectful there is no need to bother them any more.
   }
+  */
 }
 </script>
 

@@ -1,3 +1,4 @@
+/*
 import * as firebase from 'firebase/app';
 
 const messaging = firebase.messaging();
@@ -21,3 +22,4 @@ messaging.requestPermission().then(() => {
     // tslint:disable-next-line: no-console
     console.log('Unable to get permission to notify.', err);
 });
+*/
