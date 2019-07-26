@@ -12,6 +12,13 @@ module.exports = {
 
     runtimeCompiler: false,
     productionSourceMap: false,
+    configureWebpack: {
+        optimization: {
+            splitChunks: {
+                chunks: 'all'
+            }
+        }
+    },
 
 
     pwa: {
