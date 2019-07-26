@@ -13,14 +13,6 @@ module.exports = {
     runtimeCompiler: false,
     productionSourceMap: false,
 
-    configureWebpack: {
-        optimization: {
-            splitChunks: {
-                minSize: 1000,
-                maxSize: 10000,
-            }
-        }
-    },
 
     pwa: {
         // configure the workbox plugin
