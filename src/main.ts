@@ -6,9 +6,6 @@ import store from './store/store';
 
 import './config/sw/registerServiceWorker';
 
-import './config/vndrs/_index';
-import './config/firebase/_index';
-import './config/srvcs/_index';
 
 Vue.config.productionTip = false;
 

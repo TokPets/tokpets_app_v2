@@ -7,16 +7,9 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-
-import ConfigFirebase from './../../config/firebase/config.firebase';
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
-import 'firebase/firestore';
-import 'firebase/functions';
-import 'firebase/storage';
-
-firebase.initializeApp(ConfigFirebase);
+import './../../config/firebase/_index';
+import './../../config/vndrs/_index';
+import './../../config/srvcs/_index';
 
 @Component({})
 export default class IndexView extends Vue {
