@@ -1,0 +1,22 @@
+[debug] [2019-07-26T04:21:52.768Z] ----------------------------------------------------------------------
+[debug] [2019-07-26T04:21:52.771Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\walla\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-07-26T04:21:52.771Z] CLI Version:   7.1.1
+[debug] [2019-07-26T04:21:52.772Z] Platform:      win32
+[debug] [2019-07-26T04:21:52.772Z] Node Version:  v10.14.1
+[debug] [2019-07-26T04:21:52.774Z] Time:          Thu Jul 25 2019 23:21:52 GMT-0500 (GMT-05:00)
+[debug] [2019-07-26T04:21:52.774Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-26T04:21:52.791Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-26T04:21:52.793Z] > authorizing via signed-in user
+[debug] [2019-07-26T04:21:52.793Z] [iam] checking project app-tokpets-dev for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2019-07-26T04:21:52.798Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/app-tokpets-dev:testIamPermissions  
+
+[debug] [2019-07-26T04:21:53.670Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-26T04:21:53.674Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/app-tokpets-dev  
+ 
+[debug] [2019-07-26T04:21:54.476Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'app-tokpets-dev'...
+[info] 
+[info] i  deploying database, storage, firestore, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
