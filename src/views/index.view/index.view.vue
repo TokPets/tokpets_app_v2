@@ -1,6 +1,6 @@
 <template>
   <div class="view page index">
-    <h1>TOK PETS</h1>
+    <h1 (click)="goToLoginSignIn()">TOK PETS</h1>
     <h4>Navigator {{CurrentNavigator}}</h4>
   </div>
 </template>
@@ -14,6 +14,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class IndexView extends Vue {
 
   private CurrentNavigator: string = '';
+
+  private goToLoginSignIn(){
+    this.$router.push('/login/signin')
+  }
 
   private beforeMount() {
     /*
