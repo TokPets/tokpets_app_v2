@@ -4,6 +4,10 @@ import Home from './../views/index.view/index.view.vue';
 
 Vue.use(Router);
 
+const loginModule = 'login.view';
+const loginSignin = 'login.signin.view';
+const loginSignup = 'login.signup.view';
+
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -16,7 +20,8 @@ export default new Router({
     {
       path: '/login/signin',
       name: 'login.signin',
-      component: () => import(/* webpackChunkName: "login.signin" */ '../views/login.signin.view/login.signin.view.vue'),
+      component: () =>
+        import(/* webpackChunkName: "login.signin" */`../views/${loginModule}/${loginSignin}/${loginSignin}.vue`),
     },
   ],
 });

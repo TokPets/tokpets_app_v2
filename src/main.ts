@@ -6,7 +6,6 @@ import store from './store/store';
 
 import './config/sw/registerServiceWorker';
 
-
 Vue.config.productionTip = false;
 
 new Vue({

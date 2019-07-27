@@ -30,10 +30,10 @@ export default class DBGeolocationsService {
     }
 
     public setCountries(countries: IGeocodeCountry[]): any {
-
+        console.log(countries);
     }
     public setCities(cities: IGeocodeCity[]): any {
-
+        console.log(cities);
     }
 
 
