@@ -15,7 +15,7 @@ export default class ButtonComponent extends Vue {
     @Prop({default: 'fixed'}) public layout: string|undefined;
     @Prop({default: 'bottom'}) public position: string|undefined;
 
-    private btnClass(): string{
+    private btnClass(): string {
         return `${this.theme} ${this.layout} ${this.position}`;
     }
 }
@@ -38,6 +38,9 @@ div.light{
 
 div.fixed{
     position: fixed;
+}
+div.absolute{
+    position: absolute;
 }
 
 div.bottom{

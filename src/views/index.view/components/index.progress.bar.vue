@@ -11,25 +11,25 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class IndexProgressBarComponent extends Vue {
 
     private STATE: number = 0;
-    private async mounted(){
-        
+    private async mounted() {
+
         let isIncreased: boolean = false;
-        for(let k = 0; k < 100; k++){
+        for (let k = 0; k < 100; k++) {
             isIncreased = await this.increase(1);
         }
         this.$emit('onLoad', true);
-        
+
     }
-    private increase(nPercentage: number): Promise<boolean>{
-        return new Promise( (resolve:any) => {
-            setTimeout( () => { 
+    private increase(nPercentage: number): Promise<boolean> {
+        return new Promise( (resolve: any) => {
+            setTimeout( () => {
                 this.STATE = this.STATE + nPercentage;
                 resolve();
             }, 20);
-        })
+        });
     }
     private onLoad() {
-        
+
     }
 }
 </script>

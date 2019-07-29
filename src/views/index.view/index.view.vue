@@ -1,7 +1,6 @@
 <template>
   <div class="view page index">
 
-
       <logo-component 
         :color="'dark'" 
         :showButton="!isLoading">
@@ -16,7 +15,7 @@
         v-if="!isLoading"
         :text="'Log in'"
         :theme="'light'"
-        :layout="'fixed'"
+        :layout="'absolute'"
         :position="'bottom'">
       </button-component> 
     
@@ -43,20 +42,20 @@ export default class IndexView extends Vue {
 
   private isLoading: boolean = true;
 
-  private goToLoginSignIn() {
-    this.$router.push('/login/signin');
-  }
-
-  private onProgressBarLoad() {
-    this.isLoading = false;
-  }
-
   private beforeMount() {
     console.log('.... loading ....');
   }
 
   private mounted() {
     console.log('Welcom TokPets Apps!');
+  }
+
+  private goToLoginSignIn() {
+    this.$router.push('/login/signin');
+  }
+
+  private onProgressBarLoad() {
+    this.isLoading = false;
   }
 
 }
@@ -69,6 +68,8 @@ export default class IndexView extends Vue {
 div.view.page.index{
   
   #view(column,center,center);
+
+  position: relative;
 
   .main-logo{
     display:block;
