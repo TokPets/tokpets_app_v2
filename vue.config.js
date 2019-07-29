@@ -22,6 +22,12 @@ module.exports = {
 
 
     pwa: {
+        name: 'Tok Pets | PWA App',
+        themeColor: '#282828',
+        msTileColor: '#000000',
+        appleMobileWebAppCapable: 'yes',
+        appleMobileWebAppStatusBarStyle: 'black',
+
         // configure the workbox plugin
         workboxPluginMode: 'InjectManifest',
         workboxOptions: {
