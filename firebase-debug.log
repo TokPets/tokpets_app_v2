@@ -1,0 +1,17 @@
+[debug] [2019-07-30T04:38:10.159Z] ----------------------------------------------------------------------
+[debug] [2019-07-30T04:38:10.164Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\walla\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-07-30T04:38:10.164Z] CLI Version:   7.1.1
+[debug] [2019-07-30T04:38:10.164Z] Platform:      win32
+[debug] [2019-07-30T04:38:10.164Z] Node Version:  v10.14.1
+[debug] [2019-07-30T04:38:10.169Z] Time:          Mon Jul 29 2019 23:38:10 GMT-0500 (GMT-05:00)
+[debug] [2019-07-30T04:38:10.169Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-30T04:38:10.195Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-30T04:38:10.196Z] > authorizing via signed-in user
+[debug] [2019-07-30T04:38:10.197Z] [iam] checking project app-tokpets-dev for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2019-07-30T04:38:10.200Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/app-tokpets-dev:testIamPermissions  
+
+[debug] [2019-07-30T04:38:31.004Z] Error: getaddrinfo ENOTFOUND cloudresourcemanager.googleapis.com cloudresourcemanager.googleapis.com:443
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:57:26)
+[error] 
+[error] Error: Server Error. getaddrinfo ENOTFOUND cloudresourcemanager.googleapis.com cloudresourcemanager.googleapis.com:443
