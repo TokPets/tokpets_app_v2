@@ -35,6 +35,8 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 // ---------------------------------------------------------------------------- //
 // -- Firebase Cloud Messaging ------------------------------------------------ //
 // ---------------------------------------------------------------------------- //
+
+/*
 const messagingPublicKey = 'BLqXfDySoK_0PkM33_Dv4-gaLHw248P4eVrDq_BSb24GGHVkOGn1rFKNGGucRqgvkSSz3dWKMLBS47r37lDp5hY';
 messaging.usePublicVapidKey(messagingPublicKey);
 Notification.requestPermission().then(function (permission) {
@@ -46,6 +48,7 @@ Notification.requestPermission().then(function (permission) {
 }).catch((err) => {
     console.log('Unable to get permission to notify.', err);
 });
+*/
 messaging.setBackgroundMessageHandler(function (payload) {
     console.log('[firebase-messaging-sw.js] Received background message ', payload);
     // Customize notification here
@@ -58,6 +61,7 @@ messaging.setBackgroundMessageHandler(function (payload) {
     return self.registration.showNotification(notificationTitle,
         notificationOptions);
 });
+
 // ---------------------------------------------------------------------------- //
 
 
