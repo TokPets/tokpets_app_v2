@@ -8,17 +8,28 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import './../../../config/firebase/_index';
+
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/firestore';
+import 'firebase/functions';
+import 'firebase/storage';
+import 'firebase/messaging';
+
+import ConfigFirebase from './../../../config/firebase/config.firebase';
+firebase.initializeApp(ConfigFirebase);
+
 import './../../../config/vndrs/_index';
 import './../../../config/srvcs/_index';
 
-import * as firebase from 'firebase/app';
-const messaging = firebase.messaging();
 
 @Component({})
 export default class IndexView extends Vue {
 
   private mounted(){
+
+  const messaging = firebase.messaging();
 
     Notification.requestPermission().then(function (permission) {
     messaging.getToken().then((token: any) => {
