@@ -43,11 +43,11 @@ export default class IndexView extends Vue {
   private isLoading: boolean = true;
 
   private beforeMount() {
-    console.log('.... loading ....');
+    console.log('.... beforeMount() loading ....');
   }
 
   private mounted() {
-    console.log('Welcom TokPets Apps!');
+    console.log(' mount() Welcom TokPets Apps!');
   }
 
   private goToLoginSignIn() {
