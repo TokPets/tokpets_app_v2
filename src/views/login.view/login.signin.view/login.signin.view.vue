@@ -1,6 +1,7 @@
 <template>
   <div class="view page index">
-    <h1>TOK PETS // LOGIN // SIGNIN </h1>
+    <h1>TOK PETS </h1>
+    <h2>LOGIN // SIGNIN</h2>
   </div>
 </template>
 
