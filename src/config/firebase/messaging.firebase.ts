@@ -11,6 +11,7 @@ messaging.requestPermission()
         // Get Token
         messaging.getToken().then((token: any) => {
             // tslint:disable-next-line: no-console
+            console.log('FCM :: token');
             console.log(token);
         });
     }).catch((err: any) => {
