@@ -23,5 +23,11 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "login.signin" */`../views/${loginModule}/${loginSignin}/${loginSignin}.vue`),
     },
+    {
+      path: '*', // or '/index.html'
+      beforeEnter: (to, from, next) => {
+        next('/');
+      }
+    }
   ],
 });
