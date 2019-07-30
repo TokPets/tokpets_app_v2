@@ -1,5 +1,5 @@
 <template>
-    <div class="button" :class="btnClass()">
+    <div class="button" :class="btnClass()" @click="btnOnClick()">
         <h1>{{text}}</h1>
     </div>
 </template>
@@ -17,6 +17,10 @@ export default class ButtonComponent extends Vue {
 
     private btnClass(): string {
         return `${this.theme} ${this.layout} ${this.position}`;
+    }
+
+    private btnOnClick(): void{
+        this.$emit('onClick',{});
     }
 }
 </script>

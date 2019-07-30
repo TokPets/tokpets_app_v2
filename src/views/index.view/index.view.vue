@@ -13,6 +13,7 @@
 
       <button-component 
         v-if="!isLoading"
+        @onClick="goToLoginSignIn()"
         :text="'Log in'"
         :theme="'light'"
         :layout="'absolute'"
