@@ -39,6 +39,11 @@ div.light{
     color: gray;
     background-color: white;
 }
+div.dark{
+    color: #afafaf;
+    background-color: #424242;
+}
+
 
 div.fixed{
     position: fixed;
