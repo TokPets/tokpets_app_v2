@@ -49,62 +49,61 @@
 #view(@layout-orientation: column, @layout-position: center, @layout-justify: space-between) {
 
 
-    // ---------------------------------------- //
-    // -- constructor() ----------------------- //
-    // ---------------------------------------- //
+  // ---------------------------------------- //
+  // -- constructor() ----------------------- //
+  // ---------------------------------------- //
 
-    display: block;
-    width: 100vw;
-    height: 100vh;
-
-    /*
+  display: block;
+  width: 100%;
+  height: 100vh;
+  /*
       ESTO SE DESCOMENTA PARA EVITAR QUE LA APP MUEVA EL BOTE :)
       position: fixed;
       top: 0px;
       left: 0px;
       */
 
-    overflow-x: hidden;
-    overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 
-    background-color: @color-black;
+  background-color: @color-black;
 
-    // ---------------------------------------- //
-
-
-
-    // ---------------------------------------- //
-    // -- Layouts ----------------------------- //
-    // ---------------------------------------- //
-
-    .flex-display(flex);
-    .flex-direction(@layout-orientation);
-    .align-items(@layout-position);
-    .justify-content(@layout-justify);
-
-    // ---------------------------------------- //
+  // ---------------------------------------- //
 
 
 
+  // ---------------------------------------- //
+  // -- Layouts ----------------------------- //
+  // ---------------------------------------- //
 
-    // ---------------------------------------- //
-    // -- Layouts ----------------------------- //
-    // ---------------------------------------- //
-    font-family: 'HelveticaNeue-Light';
-    font-weight: 300;
-    // ---------------------------------------- //
+  .flex-display(flex);
+  .flex-direction(@layout-orientation);
+  .align-items(@layout-position);
+  .justify-content(@layout-justify);
+
+  // ---------------------------------------- //
 
 
 
-    // ---------------------------------------- //
-    // -- Responsive Design ------------------- //
-    // ---------------------------------------- //
 
-    @media @tablet {}
+  // ---------------------------------------- //
+  // -- Layouts ----------------------------- //
+  // ---------------------------------------- //
+  font-family: 'HelveticaNeue-Light';
+  font-weight: 300;
+  // ---------------------------------------- //
 
-    @media @desktop {}
 
-    // ---------------------------------------- //
+
+  // ---------------------------------------- //
+  // -- Responsive Design ------------------- //
+  // ---------------------------------------- //
+
+  @media @tablet {}
+
+  @media @desktop {}
+
+  // ---------------------------------------- //
 
 }
 

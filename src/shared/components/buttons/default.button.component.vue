@@ -12,7 +12,7 @@ export default class ButtonComponent extends Vue {
 
     @Prop({default: ''}) public text: string|undefined;
     @Prop({default: 'light'}) public theme: string|undefined;
-    @Prop({default: 'fixed'}) public layout: string|undefined;
+    @Prop({default: 'relative'}) public layout: string|undefined;
     @Prop({default: 'bottom'}) public position: string|undefined;
 
     private btnClass(): string {
@@ -34,7 +34,6 @@ div.button{
     padding: 1em;
     box-sizing: border-box;
 }
-
 div.light{
     color: gray;
     background-color: white;
@@ -43,15 +42,12 @@ div.dark{
     color: #afafaf;
     background-color: #424242;
 }
-
-
 div.fixed{
     position: fixed;
 }
 div.absolute{
     position: absolute;
 }
-
 div.bottom{
     bottom: 0px;
 }

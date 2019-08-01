@@ -1,26 +1,40 @@
 <template>
   <div class="view page login signin">
    
-    <div class="main-logo">
-      <img src="./../../../shared/assets/images/tok_negro.png">
+    <div class="layout-top">
+      <img class="logo" src="./../../../shared/assets/images/tok_negro.png">
     </div>
 
-    <text-component
-      @onType="doSetInputEmail()"
-      :placeholder="'Email'"
-      :icon="'./../..'"
-      :theme="'dark'"
-      :layout="'absolute'"
-      :position="'top'">
-    </text-component>
+    <div class="layout-bottom">
 
-     <button-component 
-        @onClick="doLogin()"
-        :text="'Log in'"
-        :theme="'dark'"
-        :layout="'absolute'"
-        :position="'bottom'">
-      </button-component> 
+        <div class="text-components">
+                <text-component
+                  @onType="doSetInputEmail($event)"
+                  :placeholder="'Email'"
+                  :icon="'error'"
+                  :theme="'dark'"
+                  :paddings="'0em 1em'"
+                  :position="'top'">
+                </text-component>
+
+                <text-component
+                  @onType="doSetInputEmail($event)"
+                  :placeholder="'Email'"
+                  :icon="'error'"
+                  :theme="'dark'"
+                  :paddings="'0em 1em'"
+                  :position="'bottom'">
+                </text-component>
+        </div>
+
+
+
+        <button-component 
+            @onClick="doLogin()"
+            :text="'Log in'"
+            :theme="'dark'">
+        </button-component> 
+    </div>
       
   </div>
 </template>
@@ -43,9 +57,17 @@ import './../../../config/srvcs/_index';
 export default class IndexView extends Vue {
 
   private db = (this as any).$db;
+  private LOGIN = {
+    email : '',
+    password: ''
+  };
 
   private mounted() {
  
+  }
+
+  private doSetInputEmail($email: string):void{
+    this.LOGIN.email = $email;
   }
 
   private doLogin(): Promise<any>{
@@ -69,22 +91,50 @@ export default class IndexView extends Vue {
 @import (reference) './../../../../src/shared/styles/main.less';
 div.view.page.login.signin{
   
-  #view(column,center,center);
+  #view(column,center,space-between);
 
   background-color: #d9d4d0;
   color: white;
 
   position: relative;
 
-  div.main-logo{
-    display:block;
-    width: 35%;
-    padding: 25% 0%;
-    margin: 0 auto;
-    img{
+
+  div.text-components{
+    display: block;
+    width: 100%;
+  }
+
+  div.layout-top{
+    display: block;
+    width: 100%;
+    height: 62.5%;
+
+    .flex-display(flex);
+    .flex-direction(column);
+    .align-items(center);
+    .justify-content(flex-end);
+
+  }
+
+  div.layout-bottom{
+    display: block;
+    width: 100%;
+    height: 37.5% ;
+
+    .flex-display(flex);
+    .flex-direction(column);
+    .align-items(center);
+    .justify-content(space-between);
+
+  }
+
+  img.logo{
+      height: auto;
       display: block;
-      width: 100%;
-    }
+      width: 30%;
+      box-sizing: border-box;
+      padding-bottom: 0em;
+      margin-bottom: 2em;
   }
 
 }
