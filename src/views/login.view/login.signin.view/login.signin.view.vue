@@ -1,5 +1,5 @@
 <template>
-  <div class="view page login signin">
+  <div class="view page login signin" :class="viewClass()">
    
     <div class="layout-top">
       <img class="logo" src="./../../../shared/assets/images/tok_negro.png">
@@ -8,32 +8,31 @@
     <div class="layout-bottom">
 
         <div class="text-components">
-                <text-component
+                <email-text-component
                   @onType="doSetInputEmail($event)"
                   :placeholder="'Email'"
                   :icon="'error'"
                   :theme="'dark'"
                   :paddings="'0em 1em'"
                   :position="'top'">
-                </text-component>
+                </email-text-component>
 
-                <text-component
+                <password-text-component
                   @onType="doSetInputEmail($event)"
                   :placeholder="'Email'"
                   :icon="'error'"
                   :theme="'dark'"
                   :paddings="'0em 1em'"
                   :position="'bottom'">
-                </text-component>
+                </password-text-component>
         </div>
-
-
 
         <button-component 
             @onClick="doLogin()"
             :text="'Log in'"
             :theme="'dark'">
         </button-component> 
+        
     </div>
       
   </div>
@@ -51,7 +50,8 @@ import './../../../config/srvcs/_index';
 @Component({
     components: {
     'button-component' : ButtonComponet,
-    'text-component' :  TextInputComponent
+    'email-text-component' :  TextInputComponent,
+    'password-text-component' :  TextInputComponent,
   },
 })
 export default class IndexView extends Vue {
@@ -82,6 +82,10 @@ export default class IndexView extends Vue {
         console.warn(error);
       });
     });
+  }
+
+  private viewClass(): string{
+    return this.$store.getters.isKeyboardOpen ? 'keyboard-on' : 'keyboard-off';
   }
  
 }

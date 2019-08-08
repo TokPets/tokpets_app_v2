@@ -1,5 +1,6 @@
 <template>
-  <div class="view page index">
+  <div class="view page index" :class="viewClass()">
+
 
       <logo-component 
         :color="'dark'" 
@@ -26,18 +27,22 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 import LogoComponent from './components/index.logo.vue';
 import ProgressBarComponent from './components/index.progress.bar.vue';
 
 import ButtonComponet from './../../shared/components/buttons/default.button.component.vue';
-
 @Component({
   components: {
     'logo-component' : LogoComponent,
     'button-component' : ButtonComponet,
     'progress-bar-component' : ProgressBarComponent,
   },
+  computed:{
+     ... mapState, 
+     ... mapGetters
+  }
 })
 export default class IndexView extends Vue {
 
@@ -49,6 +54,8 @@ export default class IndexView extends Vue {
 
   private mounted() {
     console.log(' mount() Welcom TokPets Apps!');
+
+ 
   }
 
   private goToLoginSignIn() {
@@ -57,6 +64,10 @@ export default class IndexView extends Vue {
 
   private onProgressBarLoad() {
     this.isLoading = false;
+  }
+
+  private viewClass(): string{
+    return this.$store.getters.isKeyboardOpen ? 'keyboard-on' : 'keyboard-off';
   }
 
 }

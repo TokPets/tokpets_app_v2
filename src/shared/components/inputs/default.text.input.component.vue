@@ -3,7 +3,7 @@
 
         <div class="input-error" v-show="position === 'top' && error">Unregistered e-mail</div>
         <div class="input-wrapper" :class="(error ? 'error' : 'default')">
-            <input type="text" v-model="text" placeholder="" @keyup="onType()" >
+            <input type="text" v-model="text" placeholder="" @keyup="onType()" @focus="onFocus()" @blur="onBlur()">
             
             <img class="icon" v-if="error" :src="require('./icons/' + icon + '_rojo.png')">
             <img class="icon" v-if="!error" :src="require('./icons/' + icon + '_blanco.png')">
@@ -35,8 +35,17 @@ export default class TextInputComponent extends Vue {
     private inputClass(): string {
         return `${this.theme} ${this.layout} ${this.position}`;
     }
+
     private onType(): void {
         this.$emit('onType',this.text);
+    };
+
+    private onFocus(): void{
+           this.$store.dispatch('setKeyboardIsOpen',true);
+    };
+
+    private onBlur(): void{
+           this.$store.dispatch('setKeyboardIsOpen',false);
     }
  
 }

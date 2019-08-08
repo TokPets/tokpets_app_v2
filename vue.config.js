@@ -8,7 +8,7 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
     filenameHashing: true,
 
-    lintOnSave: true,
+    lintOnSave: false,
 
     runtimeCompiler: false,
     productionSourceMap: false,
