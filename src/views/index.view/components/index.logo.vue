@@ -33,7 +33,8 @@ div.imagen{
     display: block;
     margin: 0 auto;
     padding: 1em 0em;
-    width: 45%;
+    width: calc(var(--view-height) / 5);
+    height: auto;
     img{
         display: block;
         width: 100%;

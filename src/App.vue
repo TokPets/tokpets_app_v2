@@ -4,6 +4,22 @@
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+@Component({})
+export default class AppView extends Vue {
+
+  private mounted() {
+    console.log(' mount() Welcom TokPets Apps!');
+    const appHeight: string = document.documentElement.clientHeight + 'px';
+    document.documentElement.style.setProperty('--view-height', appHeight);
+  }
+
+}
+</script>
+
+
 <style lang="less">
 @import '../src/shared/styles/main.less';
 

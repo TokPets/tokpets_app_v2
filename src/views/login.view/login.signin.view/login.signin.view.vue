@@ -93,6 +93,10 @@ export default class IndexView extends Vue {
 
 <style lang="less">
 @import (reference) './../../../../src/shared/styles/main.less';
+
+@layout-top-height: calc(2 * var(--view-height) / 3);
+@layout-bottom-height: calc( 1 * var(--view-height) / 3);
+
 div.view.page.login.signin{
   
   #view(column,center,space-between);
@@ -111,7 +115,7 @@ div.view.page.login.signin{
   div.layout-top{
     display: block;
     width: 100%;
-    height: 62.5%;
+    height: @layout-top-height;
 
     .flex-display(flex);
     .flex-direction(column);
@@ -123,7 +127,7 @@ div.view.page.login.signin{
   div.layout-bottom{
     display: block;
     width: 100%;
-    height: 37.5% ;
+    height: @layout-bottom-height;
 
     .flex-display(flex);
     .flex-direction(column);

@@ -82,12 +82,5 @@ div.view.page.index{
 
   position: relative;
 
-  .main-logo{
-    display:block;
-    width: 75%;
-    padding: 25% 0%;
-    margin: 0 auto;
-  }
-
 }
 </style>
