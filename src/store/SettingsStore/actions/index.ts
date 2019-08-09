@@ -9,6 +9,7 @@ const actionTwo = (context: any, payload: any) => {
 
 
 const setKeyboardIsOpen = (context: any, state: boolean) => {
+    document.getElementsByClassName('view')[0].scrollIntoView(false);
     context.commit('SET_KEYBOARD_STATUS', state);
 };
 
