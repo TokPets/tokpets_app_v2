@@ -55,7 +55,7 @@ class AppDeploy {
                 logs.succesfull(' == > isDeployed Ok !!!!');
 
                 logs.succesfull('');
-                logs.succesfull(` Hosting URL: ${currentStrategy} `);
+                logs.succesfull(` Hosting URL: ${currentStrategy['hosting-url']} `);
                 logs.succesfull('');
 
             } else {
