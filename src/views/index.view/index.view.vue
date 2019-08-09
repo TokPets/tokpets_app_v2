@@ -1,7 +1,6 @@
 <template>
   <div class="view page index" :class="viewClass()">
 
-
       <logo-component 
         :color="'dark'" 
         :showButton="!isLoading">
