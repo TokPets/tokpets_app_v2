@@ -1,15 +1,16 @@
 <template>
   <div class="input text default" :style="{ 'padding' : paddings }">
 
-        <div class="input-error" v-visible="error" v-if="position === 'top'">Unregistered e-mail</div>
+        <div class="input-error" v-visible="error" v-if="position === 'top'">Invalid Password</div>
         <div class="input-wrapper" :class="(error ? 'error' : 'default')">
-            <input type="text" v-model="text" placeholder="" @keyup="onType()" @focus="onFocus()" @blur="onBlur()">
+
+            <input  :type="getPasswordShow()" v-model="text" placeholder="" @keyup="onType()" @focus="onFocus()" @blur="onBlur()">
             
-            <img class="icon" v-if="error" :src="require('./icons/' + icon + '_rojo.png')">
-            <img class="icon" v-if="!error" :src="require('./icons/' + icon + '_blanco.png')">
+            <img class="icon" v-if="!isPasswordShow" :src="require('./icons/' + icon + '_negro.png')" @click="doToogleShow()">
+            <img class="icon" v-if="isPasswordShow" :src="require('./icons/' + icon + '_blanco.png')" @click="doToogleShow()">
         
         </div>
-        <div class="input-error" v-visible="error" v-if="position === 'bottom'">Unregistered e-mail</div>
+        <div class="input-error" v-visible="error" v-if="position === 'bottom'">Invalid Password</div>
 
   </div>
 </template>
@@ -18,7 +19,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({})
-export default class TextInputComponent extends Vue {
+export default class PasswordInputComponent extends Vue {
 
     @Prop({default: ''}) public placeholder: string|undefined;
     @Prop({default: ''}) public icon: string|undefined;
@@ -28,9 +29,9 @@ export default class TextInputComponent extends Vue {
     @Prop({default: 'bottom'}) public position: string|undefined;
     @Prop({default: false}) private error: boolean|undefined;
 
-
     private db: any = (this as any).$db;
     private text: string = '';
+    private isPasswordShow: boolean = false;
 
     private mounted() {}
     private inputClass(): string {
@@ -48,7 +49,14 @@ export default class TextInputComponent extends Vue {
     private onBlur(): void{
            this.$store.dispatch('setKeyboardIsOpen',false);
     }
- 
+
+    private doToogleShow(): void{
+        this.isPasswordShow = !this.isPasswordShow;
+    }
+    
+    private getPasswordShow(): string{
+        return this.isPasswordShow ? 'text' : 'password'
+    }
 }
 </script>
 
@@ -93,6 +101,17 @@ div.input{
             display: block;
             box-sizing: border-box;
             width: 100%;
+        }
+
+        input[type="password"] {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0.25em;
+            background: none;
+            border: none;
+            border-width: 0;
+            -webkit-box-shadow: none;
+            box-shadow: none;
         }
 
         img.icon{

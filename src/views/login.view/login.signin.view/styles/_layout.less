@@ -1,0 +1,26 @@
+@import (reference) './../../../../../src/shared/styles/main.less';
+
+#view-singin-layout() {
+    div.layout-top {
+        display: block;
+        width: 100%;
+        height: @layout-top-height;
+
+        .flex-display(flex);
+        .flex-direction(column);
+        .align-items(center);
+        .justify-content(flex-end);
+    }
+
+    div.layout-bottom {
+        display: block;
+        width: 100%;
+        height: @layout-bottom-height;
+
+        .flex-display(flex);
+        .flex-direction(column);
+        .align-items(center);
+        .justify-content(space-between);
+
+    }
+}

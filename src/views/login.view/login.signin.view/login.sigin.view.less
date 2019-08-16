@@ -1,0 +1,25 @@
+@import (reference) './../../../../src/shared/styles/main.less';
+@import './styles/_layout.less';
+@import './styles/_logo.less';
+@import './styles/_inputs.less';
+
+@layout-top-height: calc(2 * var(--view-height) / 3);
+@layout-bottom-height: calc(1 * var(--view-height) / 3);
+
+div.view.page.login.signin {
+
+    #view(column, center, space-between);
+
+    position: relative;
+    color: white;
+    background-color: #d9d4d0;
+
+
+    #view-singin-layout();
+
+    #view-sigin-logo();
+
+    #view-sigin-form();
+
+
+}

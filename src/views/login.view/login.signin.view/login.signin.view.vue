@@ -10,6 +10,7 @@
         <div class="text-components">
                 <email-text-component
                   @onType="doSetInputEmail($event)"
+                  :error="ERRORS.email"
                   :placeholder="'Email'"
                   :icon="'error'"
                   :theme="'dark'"
@@ -18,9 +19,10 @@
                 </email-text-component>
 
                 <password-text-component
-                  @onType="doSetInputEmail($event)"
-                  :placeholder="'Email'"
-                  :icon="'error'"
+                  @onType="doSetInputPassword($event)"
+                  :error="ERRORS.password"
+                  :placeholder="'Password'"
+                  :icon="'ojo'"
                   :theme="'dark'"
                   :paddings="'0em 1em'"
                   :position="'bottom'">
@@ -43,24 +45,32 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 
 import ButtonComponet from './../../../shared/components/buttons/default.button.component.vue';
 import TextInputComponent from './../../../shared/components/inputs/default.text.input.component.vue';
+import PasswordInputComponent from './../../../shared/components/inputs/default.password.input.component.vue';
 
+import './../../../config/directives/_index';
 import './../../../config/firebase/_index';
 import './../../../config/vndrs/_index';
 import './../../../config/srvcs/_index';
+
 @Component({
     components: {
     'button-component' : ButtonComponet,
     'email-text-component' :  TextInputComponent,
-    'password-text-component' :  TextInputComponent,
+    'password-text-component' :  PasswordInputComponent,
   },
 })
-export default class IndexView extends Vue {
+export default class LoginSignInView extends Vue {
 
   private db = (this as any).$db;
   private LOGIN = {
     email : '',
-    password: ''
+    password: '',
   };
+
+  private ERRORS = {
+    email: false,
+    password: false
+  }
 
   private mounted() {
       
@@ -69,6 +79,10 @@ export default class IndexView extends Vue {
   private doSetInputEmail($email: string):void{
     this.LOGIN.email = $email;
   }
+    private doSetInputPassword($password: string):void{
+    this.LOGIN.password = $password;
+  }
+
 
   private doLogin(): Promise<any>{
     return new Promise( (resolve,reject) => {
@@ -77,9 +91,13 @@ export default class IndexView extends Vue {
       this.db.users.signinByEmailAndPassword(email, password)
       .then((user:any) => {
         console.warn(user);
+         this.ERRORS.email = false;
+         this.ERRORS.password = false;
       })
       .catch((error : any) => {
         console.warn(error);
+        this.ERRORS.email = true;
+        this.ERRORS.password = true;
       });
     });
   }
@@ -92,59 +110,5 @@ export default class IndexView extends Vue {
 </script>
 
 <style lang="less">
-@import (reference) './../../../../src/shared/styles/main.less';
-
-@layout-top-height: calc(2 * var(--view-height) / 3);
-@layout-bottom-height: calc( 1 * var(--view-height) / 3);
-
-div.view.page.login.signin{
-  
-  #view(column,center,space-between);
-
-  background-color: #d9d4d0;
-  color: white;
-
-  position: relative;
-
-
-  div.text-components{
-    display: block;
-    width: 100%;
-  }
-
-  div.layout-top{
-    display: block;
-    width: 100%;
-    height: @layout-top-height;
-
-    .flex-display(flex);
-    .flex-direction(column);
-    .align-items(center);
-    .justify-content(flex-end);
-
-  }
-
-  div.layout-bottom{
-    display: block;
-    width: 100%;
-    height: @layout-bottom-height;
-
-    .flex-display(flex);
-    .flex-direction(column);
-    .align-items(center);
-    .justify-content(space-between);
-
-  }
-
-  img.logo{
-      height: auto;
-      display: block;
-      width: 30%;
-      box-sizing: border-box;
-      padding-bottom: 0em;
-      margin-bottom: 2em;
-  }
-
-}
-
+  @import './login.sigin.view.less';
 </style>
