@@ -1,15 +1,17 @@
 <template>
   <div class="input text default" :style="{ 'padding' : paddings }">
 
-        <div class="input-error" v-visible="error" v-if="position === 'top'">Unregistered e-mail</div>
-        <div class="input-wrapper" :class="(error ? 'error' : 'default')">
-            <input type="text" v-model="text" placeholder="" @keyup="onType()" @focus="onFocus()" @blur="onBlur()">
-            
-            <img class="icon" v-if="error" :src="require('./icons/' + icon + '_rojo.png')">
-            <img class="icon" v-if="!error" :src="require('./icons/' + icon + '_blanco.png')">
+        <div class="input-error" v-visible="error !== 'N/A'" v-if="position === 'top'">{{error}}</div>
+        <div class="input-wrapper" :class="getInputWrapperClass()">
         
+            <input type="text" v-model="text" placeholder="" @keyup="onType()" @focus="onFocus()" @blur="onBlur()">
+         
+            <div class="icon">
+                <img  v-if="error !== 'N/A'" :src="require('./icons/' + icon + '_rojo.png')">
+            </div>
+           
         </div>
-        <div class="input-error" v-visible="error" v-if="position === 'bottom'">Unregistered e-mail</div>
+        <div class="input-error" v-visible="error === 'N/A'" v-if="position === 'bottom'">{{error }}</div>
 
   </div>
 </template>
@@ -26,13 +28,15 @@ export default class TextInputComponent extends Vue {
     @Prop({default: 'fixed'}) public layout: string|undefined;
     @Prop({default: '0em 0em'}) public paddings: string|undefined;
     @Prop({default: 'bottom'}) public position: string|undefined;
-    @Prop({default: false}) private error: boolean|undefined;
+    @Prop({default: ''}) private error: string|undefined;
 
 
     private db: any = (this as any).$db;
     private text: string = '';
 
-    private mounted() {}
+    private mounted() {
+        this.text = this.placeholder + '';
+    }
     private inputClass(): string {
         return `${this.theme} ${this.layout} ${this.position}`;
     }
@@ -48,6 +52,11 @@ export default class TextInputComponent extends Vue {
     private onBlur(): void{
            this.$store.dispatch('setKeyboardIsOpen',false);
     }
+
+    
+  private getInputWrapperClass():string{
+    return this.error !== 'N/A' ? 'error' : 'default';
+  }
  
 }
 </script>
@@ -65,9 +74,12 @@ div.input{
         width: 100%;
         box-sizing: border-box;
         padding: 0.25em;
-        background-color: white;
+    
         color: black;
-        border:1px solid white;
+
+        border:1px solid rgba(0,0,0,0);
+        border-bottom:1px solid #424242;
+        //background-color: white;
 
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -95,8 +107,18 @@ div.input{
             width: 100%;
         }
 
-        img.icon{
+      
+        .icon{
             width: 2em;
+            height: 2em;
+            img{
+                width: 2em;
+            }
+        }
+        
+
+        &.default{
+            //border: 1px solid #424242;
         }
         &.error{
             border: 1px solid @color-red;

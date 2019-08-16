@@ -8,6 +8,7 @@
     <div class="layout-bottom">
 
         <div class="text-components">
+          
                 <email-text-component
                   @onType="doSetInputEmail($event)"
                   :error="ERRORS.email"
@@ -68,8 +69,8 @@ export default class LoginSignInView extends Vue {
   };
 
   private ERRORS = {
-    email: false,
-    password: false
+    email: 'N/A',
+    password: 'N/A'
   }
 
   private mounted() {
@@ -91,13 +92,13 @@ export default class LoginSignInView extends Vue {
       this.db.users.signinByEmailAndPassword(email, password)
       .then((user:any) => {
         console.warn(user);
-         this.ERRORS.email = false;
-         this.ERRORS.password = false;
+         this.ERRORS.email = 'N/A';
+         this.ERRORS.password = 'N/A';
       })
       .catch((error : any) => {
         console.warn(error);
-        this.ERRORS.email = true;
-        this.ERRORS.password = true;
+        this.ERRORS.email = 'Invalid Email';
+        this.ERRORS.password = 'Wrong Password';
       });
     });
   }
