@@ -73,14 +73,24 @@ private db: any = (this as any).$db;
       this.ANIMATE.createdHiddenBottom = true;
       this.ANIMATE.createdVisibleBottom = false;
       this.ANIMATE.createdVisibleUp = false;
+
       setTimeout( () => {
+
         this.ANIMATE.createdHiddenBottom = false;
         this.ANIMATE.createdVisibleBottom = true;
         this.ANIMATE.createdVisibleUp = false;
+
+        if (window.navigator && window.navigator.vibrate) {
+            navigator.vibrate(500);
+          } 
+
         setTimeout( () => {
+          
           this.ANIMATE.createdHiddenBottom = false;
           this.ANIMATE.createdVisibleBottom = false;
           this.ANIMATE.createdVisibleUp = true;
+
+          
           
         }, this.ANIMATE.time)
       }, this.ANIMATE.time)
