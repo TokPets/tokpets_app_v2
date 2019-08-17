@@ -2,11 +2,11 @@
 
   <div class="modal-mask" :class="modalMaskClass()">
     <div class="modal-wrapper" @click="close()">
-      <div class="modal-container" @click.stop :class="modalContainerClass()" v-touch:swipe.down="close()">
+      <div class="modal-container" @click.stop :class="modalContainerClass()" >
 
         <div class="modal-header">
           <slot name="header">
-              <h1>Reset password</h1>
+              <h1>Reset password no touch</h1>
           </slot>
         </div>
 
@@ -59,7 +59,7 @@ private db: any = (this as any).$db;
       createdHiddenBottom: true,
       createdVisibleBottom: false,
       createdVisibleUp: false,
-      time: 250
+      time: 1000
     }
     private EMAIL: string = '';
     private ERRORS = {
@@ -81,8 +81,8 @@ private db: any = (this as any).$db;
         this.ANIMATE.createdVisibleUp = false;
 
         if (window.navigator && window.navigator.vibrate) {
-            navigator.vibrate(500);
-          } 
+            navigator.vibrate(100);
+        } 
 
         setTimeout( () => {
           
