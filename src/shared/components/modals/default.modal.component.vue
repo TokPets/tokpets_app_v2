@@ -2,7 +2,7 @@
 
   <div class="modal-mask" :class="modalMaskClass()">
     <div class="modal-wrapper" @click="close()">
-      <div class="modal-container" @click.stop :class="modalContainerClass()">
+      <div class="modal-container" @click.stop :class="modalContainerClass()" v-touch:swipe.down="close()">
 
         <div class="modal-header">
           <slot name="header">
@@ -90,8 +90,6 @@ private db: any = (this as any).$db;
           this.ANIMATE.createdVisibleBottom = false;
           this.ANIMATE.createdVisibleUp = true;
 
-          
-          
         }, this.ANIMATE.time)
       }, this.ANIMATE.time)
 
