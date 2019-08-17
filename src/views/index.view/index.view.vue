@@ -38,10 +38,10 @@ import ButtonComponet from './../../shared/components/buttons/default.button.com
     'button-component' : ButtonComponet,
     'progress-bar-component' : ProgressBarComponent,
   },
-  computed:{
-     ... mapState, 
-     ... mapGetters
-  }
+  computed: {
+     ... mapState,
+     ... mapGetters,
+  },
 })
 export default class IndexView extends Vue {
 
@@ -54,7 +54,7 @@ export default class IndexView extends Vue {
   private mounted() {
     console.log(' mount() Welcom TokPets Apps!');
 
- 
+
   }
 
   private goToLoginSignIn() {
@@ -65,7 +65,7 @@ export default class IndexView extends Vue {
     this.isLoading = false;
   }
 
-  private viewClass(): string{
+  private viewClass(): string {
     return this.$store.getters.isKeyboardOpen ? 'keyboard-on' : 'keyboard-off';
   }
 

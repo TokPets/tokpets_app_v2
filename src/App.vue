@@ -12,7 +12,7 @@ export default class AppView extends Vue {
 
   private mounted() {
     console.log(' mount() Welcom TokPets Apps!');
-  
+
   }
 
 }

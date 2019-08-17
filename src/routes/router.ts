@@ -1,33 +1,24 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './../views/index.view/index.view.vue';
+
+import { INDEX_ROUTES } from './index.routes/index.routes';
+import { LOGIN_SIGNIN_ROUTES } from './login.routes/login.signin.routes';
+//import { LOGIN_SIGNUP_ROUTES } from './login.routes/login.signup.routes';
 
 Vue.use(Router);
-
-const loginModule = 'login.view';
-const loginSignin = 'login.signin.view';
-const loginSignup = 'login.signup.view';
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home,
-    },
-    {
-      path: '/login/signin',
-      name: 'login.signin',
-      component: () =>
-        import(/* webpackChunkName: "login.signin" */`../views/${loginModule}/${loginSignin}/${loginSignin}.vue`),
-    },
+    ...INDEX_ROUTES,
+    ...LOGIN_SIGNIN_ROUTES,
+    //...LOGIN_SIGNUP_ROUTES,
     {
       path: '*', // or '/index.html'
-      beforeEnter: (to, from, next) => {
+      beforeEnter: (to: any, from: any, next: any) => {
         next('/');
       }
     }
-  ],
+  ]
 });

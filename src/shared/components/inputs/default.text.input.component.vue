@@ -1,18 +1,15 @@
 <template>
   <div class="input text default" :style="{ 'padding' : paddings }">
-
         <div class="input-error" v-visible="error !== 'N/A'" v-if="position === 'top'">{{error}}</div>
-        <div class="input-wrapper" :class="getInputWrapperClass()">
         
-            <input type="text" v-model="text" placeholder="" @keyup="onType()" @focus="onFocus()" @blur="onBlur()">
-         
+        <div class="input-wrapper" :class="getInputWrapperClass()">
+            <input type="text" v-model="text" :placeholder="placeholder" @keyup="onType()" @focus="onFocus()" @blur="onBlur()" autocomplete="on">
             <div class="icon">
                 <img  v-if="error !== 'N/A'" :src="require('./icons/' + icon + '_rojo.png')">
             </div>
-           
         </div>
-        <div class="input-error" v-visible="error === 'N/A'" v-if="position === 'bottom'">{{error }}</div>
 
+        <div class="input-error" v-visible="error !== 'N/A'" v-if="position === 'bottom'">{{error }}</div>
   </div>
 </template>
 
@@ -33,31 +30,33 @@ export default class TextInputComponent extends Vue {
 
     private db: any = (this as any).$db;
     private text: string = '';
+    private inTheme: string = 'none';
 
     private mounted() {
-        this.text = this.placeholder + '';
+        // this.text = this.placeholder + '';
     }
     private inputClass(): string {
-        return `${this.theme} ${this.layout} ${this.position}`;
+        return `${this.theme} ${this.layout} ${this.position} in-${this.inTheme}`;
     }
 
     private onType(): void {
-        this.$emit('onType',this.text);
-    };
-
-    private onFocus(): void{
-           this.$store.dispatch('setKeyboardIsOpen',true);
-    };
-
-    private onBlur(): void{
-           this.$store.dispatch('setKeyboardIsOpen',false);
+        this.$emit('onType', this.text);
     }
 
-    
-  private getInputWrapperClass():string{
-    return this.error !== 'N/A' ? 'error' : 'default';
-  }
- 
+    private onFocus(): void {
+        this.$store.dispatch('setKeyboardIsOpen', true);
+        this.inTheme = 'theme-light';
+    }
+
+    private onBlur(): void {
+        this.$store.dispatch('setKeyboardIsOpen', false);
+        this.inTheme = this.text.length > 0 ? 'theme-light' : 'theme-none' ;
+    }
+
+    private getInputWrapperClass(): string {
+        return this.error !== 'N/A' ? `error ${this.inTheme}` : `default ${this.inTheme}`;
+    }
+
 }
 </script>
 
@@ -105,6 +104,19 @@ div.input{
             display: block;
             box-sizing: border-box;
             width: 100%;
+                    &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                    color: #9b9797;
+                    opacity: 1; /* Firefox */
+                    }
+
+                    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+                    color: #9b9797;
+                    }
+
+                    &::-ms-input-placeholder { /* Microsoft Edge */
+                    color: #9b9797;
+                    }
+            
         }
 
       
@@ -115,21 +127,25 @@ div.input{
                 width: 2em;
             }
         }
-        
 
-        &.default{
-            //border: 1px solid #424242;
-        }
         &.error{
             border: 1px solid @color-red;
         }
+
+        &.theme-light{
+            background-color:white;
+        }
     }
+
     &-error{
         color: @color-red ;
         text-align: left;
         padding: 0.5em 0em;
         letter-spacing: 1px;
     }
+
+
+
 }
 div.light{
     color: gray;

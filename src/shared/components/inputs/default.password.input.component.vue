@@ -2,11 +2,11 @@
   <div class="input text default" :style="{ padding: paddings }">
 
 
-    <div class="input-error" v-visible="error !== 'N/A'" v-if="position === 'top'"> {{error}} </div>
+    <div class="input-error" v-visible="error !== 'N/A'" v-if="position === 'top'" @click="callback"> {{error}} </div>
     
     
     <div class="input-wrapper" :class="getInputWrapperClass()">
-      <input :type="getPasswordShow()" v-model="text" placeholder="" @keyup="onType()" @focus="onFocus()" @blur="onBlur()" />
+      <input :type="getPasswordShow()" v-model="text" :placeholder="placeholder" @keyup="onType()" @focus="onFocus()" @blur="onBlur()" autocomplete="on"/>
       <div class="icon">
               <img v-if="error !== 'N/A'" :src="require('./icons/' + 'error' + '_rojo.png')">
               <img v-if="error === 'N/A' && !isPasswordShow" :src="require('./icons/' + icon + '_negro.png')" @click="doToogleShow()" />
@@ -16,7 +16,9 @@
     </div>
     
     
-    <div class="input-error" v-visible="error !== 'N/A'" v-if="position === 'bottom'">{{error}}</div>
+    <div class="input-error" v-visible="error !== 'N/A'" v-if="position === 'bottom'" @click="callback">
+      {{error}}
+    </div>
   
   
   </div>
@@ -34,13 +36,15 @@ export default class PasswordInputComponent extends Vue {
   @Prop({ default: '0em 0em' }) public paddings: string | undefined;
   @Prop({ default: 'bottom' }) public position: string | undefined;
   @Prop({ default: 'N/A' }) private error: string | undefined;
+  @Prop({ default: {} }) private callback: any | undefined;
 
   private db: any = (this as any).$db;
   private text: string = '';
   private isPasswordShow: boolean = false;
+  private inTheme: string = 'none';
 
   private mounted() {
-    this.text = this.placeholder + '';
+    // this.text = this.placeholder + '';
   }
   private inputClass(): string {
     return `${this.theme} ${this.layout} ${this.position}`;
@@ -50,13 +54,20 @@ export default class PasswordInputComponent extends Vue {
     this.$emit('onType', this.text);
   }
 
-  private onFocus(): void {
-    this.$store.dispatch('setKeyboardIsOpen', true);
-  }
+    private onFocus(): void {
+        this.$store.dispatch('setKeyboardIsOpen', true);
+        this.inTheme = 'theme-light';
+    }
 
-  private onBlur(): void {
-    this.$store.dispatch('setKeyboardIsOpen', false);
-  }
+    private onBlur(): void {
+        this.$store.dispatch('setKeyboardIsOpen', false);
+        this.inTheme = this.text.length > 0 ? 'theme-light' : 'theme-none' ;
+    }
+
+
+    private getInputWrapperClass(): string {
+    return (this.error !== 'N/A' ) ? `error ${this.inTheme}` : `default ${this.inTheme}`;
+    }
 
   private doToogleShow(): void {
     this.isPasswordShow = !this.isPasswordShow;
@@ -66,9 +77,7 @@ export default class PasswordInputComponent extends Vue {
     return this.isPasswordShow ? 'text' : 'password';
   }
 
-  private getInputWrapperClass():string{
-    return this.error !== 'N/A' ? 'error' : 'default';
-  }
+
 }
 </script>
 
@@ -86,8 +95,8 @@ div.input {
     padding: 0.25em;
     color: black;
     
-      border:1px solid rgba(0,0,0,0);
-      border-bottom:1px solid #424242;
+    border:1px solid rgba(0,0,0,0);
+    border-bottom:1px solid #424242;
 
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -137,10 +146,10 @@ div.input {
     &.error {
       border: 1px solid @color-red;
     }
-    &.default{
-      
-
+    &.theme-light{
+        background-color:white;
     }
+  
   }
   &-error {
     color: @color-red;
@@ -149,6 +158,7 @@ div.input {
     letter-spacing: 1px;
   }
 }
+
 div.light {
   color: gray;
   background-color: white;

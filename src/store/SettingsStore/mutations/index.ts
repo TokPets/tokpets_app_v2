@@ -1,9 +1,9 @@
 const PROP1_UPDATED = (state: any, payload: any) => {
-    //state.someObj.prop1 = payload;
+    // state.someObj.prop1 = payload;
 };
 
 const PROP2_UPDATED = (state: any, payload: any) => {
-    //state.someObj.prop2 = payload;
+    // state.someObj.prop2 = payload;
 };
 
 const SET_KEYBOARD_STATUS = (state: any, payload: boolean) => {

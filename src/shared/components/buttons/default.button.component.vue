@@ -11,16 +11,17 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class ButtonComponent extends Vue {
 
     @Prop({default: ''}) public text: string|undefined;
+    @Prop({default: false}) public disabled: boolean|undefined;
     @Prop({default: 'light'}) public theme: string|undefined;
     @Prop({default: 'relative'}) public layout: string|undefined;
     @Prop({default: 'bottom'}) public position: string|undefined;
 
     private btnClass(): string {
-        return `${this.theme} ${this.layout} ${this.position}`;
+        return `${this.disabled ? 'disabled' : ''} ${this.theme} ${this.layout} ${this.position}`;
     }
 
-    private btnOnClick(): void{
-        this.$emit('onClick',{});
+    private btnOnClick(): void {
+        this.$emit('onClick', {});
     }
 }
 </script>
@@ -33,6 +34,8 @@ div.button{
     
     padding: 1em;
     box-sizing: border-box;
+    
+    line-height: 1.5em;
 }
 div.light{
     color: gray;
@@ -50,6 +53,10 @@ div.absolute{
 }
 div.bottom{
     bottom: 0px;
+}
+div.disabled{
+   background-color: #b9b9b9;
+   color: white; 
 }
 
 //@import './../../styles/main.less';
