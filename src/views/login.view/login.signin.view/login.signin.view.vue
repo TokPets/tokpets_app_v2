@@ -70,7 +70,7 @@ export default class LoginSignInView extends Vue {
   private db: any = (this as any).$db;
   private LOGIN: any = {
     email : 'jl.mayorga236@gmail.com',
-    password: 'asdfasdf',
+    password: 'lvosca.inc',
   };
 
   private ERRORS: any = {
