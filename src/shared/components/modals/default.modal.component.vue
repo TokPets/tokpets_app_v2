@@ -1,10 +1,10 @@
 <template>
 
   <div class="modal-mask" :class="modalMaskClass()">
-    <div class="modal-wrapper" @click="close()">
+    <div class="modal-wrapper" @click="close()" > 
       <div class="modal-container" @click.stop :class="modalContainerClass()" >
 
-        <div class="modal-header">
+        <div class="modal-header" >
           <slot name="header">
               <h1>Reset password no touch</h1>
           </slot>
@@ -59,7 +59,7 @@ private db: any = (this as any).$db;
       createdHiddenBottom: true,
       createdVisibleBottom: false,
       createdVisibleUp: false,
-      time: 1000
+      time: 800
     }
     private EMAIL: string = '';
     private ERRORS = {
@@ -90,8 +90,8 @@ private db: any = (this as any).$db;
           this.ANIMATE.createdVisibleBottom = false;
           this.ANIMATE.createdVisibleUp = true;
 
-        }, this.ANIMATE.time)
-      }, this.ANIMATE.time)
+        }, this.ANIMATE.time/2)
+      }, this.ANIMATE.time/2)
 
 
   }
@@ -106,9 +106,9 @@ private db: any = (this as any).$db;
                 this.ANIMATE.createdHiddenBottom = true;
                 this.ANIMATE.createdVisibleBottom = false;
                 this.ANIMATE.createdVisibleUp = false;
-                  setTimeout(() => this.$emit('close'), this.ANIMATE.time)
-              }, this.ANIMATE.time)
-      }, this.ANIMATE.time)
+                  setTimeout(() => this.$emit('close'), this.ANIMATE.time/2)
+              }, this.ANIMATE.time/2)
+      }, this.ANIMATE.time/3)
   }
 
   private modalMaskClass(): string{

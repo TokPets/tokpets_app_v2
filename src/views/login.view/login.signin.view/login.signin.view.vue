@@ -79,7 +79,7 @@ export default class LoginSignInView extends Vue {
   };
 
 
-  private isModalOpen: boolean = true;
+  private isModalOpen: boolean = false;
 
   private mounted() {
 

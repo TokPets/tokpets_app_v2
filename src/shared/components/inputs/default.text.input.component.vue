@@ -3,7 +3,7 @@
         <div class="input-error" v-visible="error !== 'N/A'" v-if="position === 'top'">{{error}}</div>
         
         <div class="input-wrapper" :class="getInputWrapperClass()">
-            <input type="text" v-model="text" :placeholder="placeholder" @keyup="onType()" @focus="onFocus()" @blur="onBlur()" autocomplete="on">
+            <input type="text" name="email" v-model="text" :placeholder="placeholder" @keyup="onType()" @focus="onFocus()" @blur="onBlur()" autocomplete="on">
             <div class="icon">
                 <img  v-if="error !== 'N/A'" :src="require('./icons/' + icon + '_rojo.png')">
             </div>

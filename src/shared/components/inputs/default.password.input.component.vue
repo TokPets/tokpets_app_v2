@@ -6,7 +6,7 @@
     
     
     <div class="input-wrapper" :class="getInputWrapperClass()">
-      <input :type="getPasswordShow()" v-model="text" :placeholder="placeholder" @keyup="onType()" @focus="onFocus()" @blur="onBlur()" autocomplete="on"/>
+      <input name="password" :type="getPasswordShow()" v-model="text" :placeholder="placeholder" @keyup="onType()" @focus="onFocus()" @blur="onBlur()" autocomplete="on"/>
       <div class="icon">
               <img v-if="error !== 'N/A'" :src="require('./icons/' + 'error' + '_rojo.png')">
               <img v-if="error === 'N/A' && !isPasswordShow" :src="require('./icons/' + icon + '_negro.png')" @click="doToogleShow()" />
