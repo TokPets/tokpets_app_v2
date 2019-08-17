@@ -100,16 +100,23 @@ export default class LoginSignInView extends Vue {
     return new Promise( (resolve, reject) => {
       const email = this.LOGIN.email;
       const password = this.LOGIN.password;
-      console.warn({
+ 
+      this.db.users.signinByEmailAndPassword(email, password)
+      .then((user: any) => {
+         
+         
+         this.ERRORS.email = 'N/A';
+         this.ERRORS.password = 'N/A';
+
+          this.$router.push('/login/signup');
+      })
+      .catch((error: any) => {
+
+
+      console.error({
         email : email,
         password : password
       })
-      this.db.users.signinByEmailAndPassword(email, password)
-      .then((user: any) => {
-         this.ERRORS.email = 'N/A';
-         this.ERRORS.password = 'N/A';
-      })
-      .catch((error: any) => {
         
         if (error.type == 'ERROR_EMAIL') {
           

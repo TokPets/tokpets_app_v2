@@ -1,32 +1,50 @@
 export const LOGIN_SIGNUP_ROUTES = [
   {
-    path: '/view/signup',
+    path: '/login/signup',
     name: 'signup',
-    component: () => import(/* webpackChunkName: "about" */ '../../views/login/signup.view.vue')
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.view.vue'
+      )
   },
   {
-    path: '/view/signup/intro/:step',
+    path: '/login/signup/intro/:step',
     name: 'signup/intro',
-    component: () => import(/* webpackChunkName: "about" */ '../../views/login/signup.view.vue')
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.view.vue'
+      )
   },
   {
-    path: '/view/signup/code/:code',
+    path: '/login/signup/code/:code',
     name: 'signup/code',
-    component: () => import(/* webpackChunkName: "about" */ '../../views/login/signup.view.vue')
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.view.vue'
+      )
   },
   {
-    path: '/view/signup/pet',
+    path: '/login/signup/pet',
     name: 'signup/pet',
-    component: () => import(/* webpackChunkName: "about" */ '../../views/login/signup.view.vue')
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.view.vue'
+      )
   },
   {
-    path: '/view/signup/user',
+    path: '/login/signup/user',
     name: 'signup/pet',
-    component: () => import(/* webpackChunkName: "about" */ '../../views/login/signup.view.vue')
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.view.vue'
+      )
   },
   {
-    path: '/view/signup/terms',
+    path: '/login/signup/terms',
     name: 'signup/terms',
-    component: () => import(/* webpackChunkName: "about" */ '../../views/views/login/signup.view.vue')
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.view.vue'
+      )
   }
 ];
