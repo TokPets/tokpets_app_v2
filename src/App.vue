@@ -12,7 +12,8 @@ export default class AppView extends Vue {
 
   private mounted() {
     console.log(' mount() Welcom TokPets Apps!');
-
+    const appHeight: string = document.documentElement.clientHeight + 'px';
+    document.documentElement.style.setProperty('--view-height', appHeight);
   }
 
 }
@@ -30,7 +31,7 @@ export default class AppView extends Vue {
 
   display: block;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow-x: hidden;
   overflow-y:scroll;
 
