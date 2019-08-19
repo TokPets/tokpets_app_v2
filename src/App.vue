@@ -11,7 +11,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class AppView extends Vue {
 
   private mounted() {
-    console.log(' mount() Welcom TokPets Apps!');
+    console.log(' @mount() Welcom TokPets Apps!');
     const appHeight: string = document.documentElement.clientHeight + 'px';
     document.documentElement.style.setProperty('--view-height', appHeight);
   }
