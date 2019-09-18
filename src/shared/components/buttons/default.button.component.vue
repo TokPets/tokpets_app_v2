@@ -1,5 +1,8 @@
 <template>
-    <div class="button" :class="btnClass()" @click="btnOnClick()">
+    <div class="button"  
+        @click="btnOnClick()"
+        :class="btnClass()" 
+        :style="{ zIndex: z_index }">
         <h1>{{text}}</h1>
     </div>
 </template>
@@ -15,6 +18,7 @@ export default class ButtonComponent extends Vue {
     @Prop({default: 'light'}) public theme: string|undefined;
     @Prop({default: 'relative'}) public layout: string|undefined;
     @Prop({default: 'bottom'}) public position: string|undefined;
+    @Prop({default: 0}) public z_index: number|undefined;
 
     private btnClass(): string {
         return `${this.disabled ? 'disabled' : ''} ${this.theme} ${this.layout} ${this.position}`;

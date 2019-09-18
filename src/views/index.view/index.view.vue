@@ -2,6 +2,7 @@
   <div class="view page index" :class="viewClass()">
 
       <logo-component 
+        @onClick="goToLoginSignUp()"
         :color="'dark'" 
         :showButton="!isLoading">
       </logo-component>
@@ -59,6 +60,9 @@ export default class IndexView extends Vue {
 
   private goToLoginSignIn() {
     this.$router.push('/login/signin');
+  }
+  private goToLoginSignUp() {
+    this.$router.push('/login/signup/intro/0');
   }
 
   private onProgressBarLoad() {

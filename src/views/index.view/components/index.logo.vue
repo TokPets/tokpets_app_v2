@@ -6,7 +6,7 @@
           <img v-if="color === 'light'" src="@/shared/assets/images/tok_negro.png">
     </div>
 
-    <div class="button signup" :style="{ visibility : !showButton ? 'hidden' : 'visible'}">
+    <div class="button signup" :style="{ visibility : !showButton ? 'hidden' : 'visible'}" @click="goToSignUp()">
         <h1>Create a new account</h1>
         <h2>i'm a new in tok</h2>
     </div>
@@ -22,6 +22,10 @@ export default class LogoComponent extends Vue {
 
     @Prop({default: 'light'}) public color: string|undefined;
     @Prop({default: false})   public showButton: boolean|undefined;
+
+    public goToSignUp(): void{
+        this.$emit('onClick')
+    }
 
 }
 </script>

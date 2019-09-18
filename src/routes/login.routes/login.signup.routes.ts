@@ -12,8 +12,8 @@ export const LOGIN_SIGNUP_ROUTES = [
     name: 'signup/intro',
     component: () =>
       import(
-        /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.view.vue'
-      )
+        /* webpackChunkName: "signup.tutorial" */
+        './../../views/login.view/login.signup.view/login.signup.tutorial.view.vue'),
   },
   {
     path: '/login/signup/code/:code',
