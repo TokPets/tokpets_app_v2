@@ -1,9 +1,9 @@
 <template>
     <header>
-        <button class="back-btn">
+        <button class="back-btn" @click="goBack()">
             <img alt="TokPets | Go Back Button" class="" src="@/shared/assets/images/signup-tutorial/header_back.png"> 
         </button>
-        <button class="home-btn">
+        <button class="home-btn" @click="goHome()">
             <img alt="TokPets | Go Home Button" class="" src="@/shared/assets/images/signup-tutorial/header_home.png"> 
         </button>    
     </header>
@@ -15,6 +15,14 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component({})
 export default class HeaderSignUpComponent extends Vue {
      @Prop({default: 'light'}) public theme: string|undefined;
+     
+     goBack(){
+        this.$router.go(-1)
+     }
+
+     goHome(){
+         this.$router.push(`/`);
+     }
 }
 </script>
 
