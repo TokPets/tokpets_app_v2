@@ -62,6 +62,8 @@ export default class LoginSignInView extends Vue {
         image: require('./../../../shared/assets/images/signup-tutorial/step_2_also.png')
     }];
 
+    
+
   private beforeMount(): void{
 
   }
@@ -73,20 +75,7 @@ export default class LoginSignInView extends Vue {
   }
 
   public doNext(): void{
-      const currentStep: number = parseInt(this.$route.params.step + '');
-
-      if(currentStep === 0){
-          this.$router.push('/login/signup/intro/1');
-      }
-
-      if(currentStep > 0 && currentStep < 3){
-          this.$router.push(`/login/signup/intro/${currentStep + 1}`);
-      }
-
-      if(currentStep === 3){
-          this.$router.push('/login/signup/code');
-      }
-
+    this.$router.push('/login/signup/code');
   }
 
 }
@@ -107,8 +96,10 @@ div.view.signup.tutorial{
 
     z-index: 0;
 
-    width: 100%;
+    width: 100vw;
     height: @layout-height;
+
+    overflow: scroll;
 
 }
 </style>

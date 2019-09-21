@@ -1,14 +1,41 @@
 <template>
   <div id="app">
-    <router-view/>
+
+   <router-view/>
+
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import SwiperSignUpComponent from './shared/components/swipers/swiper.signup.component.vue';
 
-@Component({})
+import './config/vndrs/_index';
+import './config/srvcs/_index';
+@Component({
+  components: {
+    'swiper-component' : SwiperSignUpComponent,
+  }
+})
 export default class AppView extends Vue {
+
+   private SLIDES: any[] = [{
+        id: 0,
+        title: 'Welcome,',
+        text: 'asdfads',
+        image: require('./shared/assets/images/signup-tutorial/step_0_welcome.png')
+    },{
+        id: 1,
+        title: 'What doest it do?',
+        text: 'asdfa',
+        image: require('./shared/assets/images/signup-tutorial/step_1_what.png')
+    },{
+        id: 2,
+        title: 'Also ...',
+        text: 'asdf',
+        image: require('./shared/assets/images/signup-tutorial/step_2_also.png')
+    }];
+
 
   private mounted() {
     console.log(' @mount() Welcom TokPets Apps!');
@@ -30,10 +57,7 @@ export default class AppView extends Vue {
   text-align: center;
 
   display: block;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y:scroll;
+
 
 }
 </style>
