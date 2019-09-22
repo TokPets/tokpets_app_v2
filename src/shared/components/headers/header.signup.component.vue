@@ -4,7 +4,8 @@
             <img alt="TokPets | Go Back Button" class="" src="@/shared/assets/images/signup-tutorial/header_back.png"> 
         </button>
         <button class="home-btn" @click="goHome()">
-            <img alt="TokPets | Go Home Button" class="" src="@/shared/assets/images/signup-tutorial/header_home.png"> 
+            <img v-if="theme === 'light'" alt="TokPets | Go Home Button" class="" src="@/shared/assets/images/signup-tutorial/header_home.png"> 
+            <img v-if="theme === 'dark'" alt="TokPets | Go Home Button" class="" src="@/shared/assets/images/signup-tutorial/header_home_black.png"> 
         </button>    
     </header>
 </template>

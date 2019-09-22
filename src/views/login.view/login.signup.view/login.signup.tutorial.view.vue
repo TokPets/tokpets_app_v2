@@ -6,11 +6,13 @@
         </header-component>
 
         <swiper-component
+            @swipeToEnd="handleSwipeToEnd"
             :slides="SLIDES">
         </swiper-component>
 
         <button-component 
             @onClick="doNext()"
+            :disabled="BtnStartEnable"
             :text="'Start'"
             :theme="'dark'"
             :z_index="100"
@@ -62,11 +64,8 @@ export default class LoginSignInView extends Vue {
         image: require('./../../../shared/assets/images/signup-tutorial/step_2_also.png')
     }];
 
-    
+    private BtnStartEnable: boolean = false;
 
-  private beforeMount(): void{
-
-  }
   private mounted(): void {
 
   }
@@ -75,7 +74,16 @@ export default class LoginSignInView extends Vue {
   }
 
   public doNext(): void{
-    this.$router.push('/login/signup/code');
+
+    console.log('this.BtnStartEnable')
+    console.log(this.BtnStartEnable)
+    if(!this.BtnStartEnable){
+        this.$router.push('/login/signup/code/000000');
+    }
+  }
+
+  public handleSwipeToEnd($isEnd: boolean){
+      this.BtnStartEnable = !$isEnd
   }
 
 }

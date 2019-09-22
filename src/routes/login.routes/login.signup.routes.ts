@@ -20,7 +20,7 @@ export const LOGIN_SIGNUP_ROUTES = [
     name: 'signup/code',
     component: () =>
       import(
-        /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.view.vue'
+        /* webpackChunkName: "signup.code" */ './../../views/login.view/login.signup.view/login.signup.code.view.vue'
       )
   },
   {

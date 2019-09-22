@@ -39,12 +39,23 @@ export default class SwiperSignUpComponent extends Vue {
 
     public mounted(){
         const currentStep: number = parseInt(this.$route.params.step + '');
+        if(currentStep === (this.slides as ITutorialSlides[]).length - 1){
+            this.$emit('swipeToEnd',true);
+        }else{
+            this.$emit('swipeToEnd',false);
+        }
         (this.$refs.mySwiper as any).swiper.slideTo(currentStep);
     }
 
 
     public slideChanged(){
+
         const currentSlide: number = (this.$refs.mySwiper as any).swiper.activeIndex ;
+        if(currentSlide === (this.slides as ITutorialSlides[]).length - 1){
+            this.$emit('swipeToEnd',true);
+        }else{
+            this.$emit('swipeToEnd',false);
+        }
         this.$router.push(`/login/signup/intro/${currentSlide}`);
     }
    
