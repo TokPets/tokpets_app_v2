@@ -1,16 +1,23 @@
 <template>
-<div>
-    <form class="input-code">
-        <input class="inputs" v-model="DATA[0]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
-        <input class="inputs" v-model="DATA[1]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
-        <input class="inputs" v-model="DATA[2]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
-        <input class="inputs" v-model="DATA[3]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
-        <input class="inputs" v-model="DATA[4]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
-        <input class="inputs" v-model="DATA[5]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
-        <input class="inputs" v-model="DATA[6]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
-        <input type="submit" value="submit">
-    </form>
-</div>
+  <div class="input text default" :style="{ 'padding' : paddings }">
+        
+        <div class="input-error" v-visible="error !== 'N/A'" v-if="(position === 'top') && (errorDisplay)">{{error}}</div>
+        
+        <div class="input-wrapper" :class="getInputWrapperClass()">
+            
+            <form class="input-code">
+                <input class="inputs" v-model="DATA[0]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
+                <input class="inputs" v-model="DATA[1]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
+                <input class="inputs" v-model="DATA[2]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
+                <input class="inputs" v-model="DATA[3]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
+                <input class="inputs" v-model="DATA[4]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
+                <input class="inputs" v-model="DATA[5]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
+                <input class="inputs" v-model="DATA[6]" type="text"  pattern="[^a-zA-Z]+" maxlength="1">
+            </form>
+        </div>
+
+        <div class="input-error" v-visible="error !== 'N/A'" v-if="(position === 'bottom') && (errorDisplay)">{{error }}</div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -27,6 +34,7 @@ export default class TextInputComponent extends Vue {
     @Prop({default: 'fixed'}) public layout: string|undefined;
     @Prop({default: '0em 0em'}) public paddings: string|undefined;
     @Prop({default: 'bottom'}) public position: string|undefined;
+    @Prop({default: true}) public errorDisplay: boolean|undefined;
     @Prop({default: ''}) private error: string|undefined;
 
 
@@ -36,6 +44,11 @@ export default class TextInputComponent extends Vue {
     private inTheme: string = 'none';
 
     private mounted() {
+
+        console.log('')
+        console.log(' ==> error')
+        console.log(this.error)
+        console.log('')
 
         const vThis = this;
         $('.inputs').keyup(function (this: any, $event: any) {
@@ -77,7 +90,7 @@ export default class TextInputComponent extends Vue {
     }
 
     private getInputWrapperClass(): string {
-        return this.error !== 'N/A' ? `error ${this.inTheme}` : `default ${this.inTheme}`;
+        return (this.error !== 'N/A' && this.error !== '') ? `error ${this.inTheme}` : `default ${this.inTheme}`;
     }
 
 }
@@ -85,10 +98,142 @@ export default class TextInputComponent extends Vue {
 
 <style scoped lang="less">
 @import (reference) './../../styles/main.less';
+
+div.input{
+
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+
+    &-wrapper{
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.25em;
+        background-color:white;
+
+        &.error{
+            border: 1px solid @color-red;
+        }
+
+        &.theme-light{
+            background-color:white;
+        }
+    }
+
+/*
+    &-wrapper{
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.25em;
+    
+        color: black;
+
+        border:1px solid rgba(0,0,0,0);
+        border-bottom:1px solid #424242;
+        //background-color: white;
+
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+
+        input{
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+                    &::placeholder { 
+                    color: #9b9797;
+                    opacity: 1; 
+                    }
+
+                    &:-ms-input-placeholder { 
+                    color: #9b9797;
+                    }
+
+                    &::-ms-input-placeholder { 
+                    color: #9b9797;
+                    }
+            
+        }
+
+      
+        .icon{
+            width: 2em;
+            height: 2em;
+            img{
+                width: 2em;
+            }
+        }
+
+        &.error{
+            border: 1px solid @color-red;
+        }
+
+        &.theme-light{
+            background-color:white;
+        }
+    }
+    */
+
+    &-error{
+        color: @color-red ;
+        text-align: left;
+        padding: 0.5em 0em;
+        letter-spacing: 1px;
+    }
+
+
+
+}
+div.light{
+    color: gray;
+    background-color: white;
+}
+div.dark{
+    color: #afafaf;
+    background-color: #424242;
+}
+div.fixed{
+    position: fixed;
+}
+div.absolute{
+    position: absolute;
+}
+div.bottom{
+    bottom: 0px;
+    text-align:center;
+}
+div.top{
+    top: 0px;
+        text-align:center;
+
+}
+
+div.input-error{
+    text-align: center;
+}
+
 form.input-code{
 
       display: table;
-    margin: 100px auto;
+    margin: 10px auto;
     text-align: center;
     box-sizing: border-box;
     width: 100%;
@@ -104,7 +249,7 @@ form.input-code{
     border: none;
     border-bottom: 2px solid gray;
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px;
     margin: 0 5px;
     width: 1.5em;
     text-align: center;
@@ -117,4 +262,5 @@ input[type="submit"] {
     padding: 10px;
     width: 100%;
 }
+
 </style>

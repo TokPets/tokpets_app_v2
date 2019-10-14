@@ -1,8 +1,24 @@
-import * as functions from 'firebase-functions';
+// index.ts
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-export const helloWorld = functions.https.onRequest((request, response) => {
-    response.send("Hello from Firebase!");
-});
+//  ------------------------------------------- //
+//  -- Import Firebase and Vendors Resources -- //
+//  ------------------------------------------- //
+import * as functions from 'firebase-functions';
+//  ------------------------------------------- //
+
+
+//  ------------------------------------------- //
+//  -- Import App's Apis & Methods           -- //
+//  ------------------------------------------- //
+import getHelloWorldApi from './common/helloWorld.common.api';
+import getCitiesByCountryCodeApi from './geolocation/getCitiesByCountryCode.geolocation.api';
+//  ------------------------------------------- //
+
+
+
+
+
+module.exports = {
+  'hello-world': functions.https.onRequest(getHelloWorldApi),
+  'get-cities-by-country-code': functions.https.onRequest(getCitiesByCountryCodeApi)
+};

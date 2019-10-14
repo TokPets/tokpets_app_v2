@@ -1,6 +1,6 @@
 <template>
   <div class="input text default" :style="{ 'padding' : paddings }">
-        <div class="input-error" v-visible="error !== 'N/A'" v-if="position === 'top'">{{error}}</div>
+        <div class="input-error" v-visible="error !== 'N/A'" v-if="(position === 'top') && (errorDisplay === 'true')">{{error}}</div>
         
         <div class="input-wrapper" :class="getInputWrapperClass()">
             <input type="text" name="email" v-model="text" :placeholder="placeholder" @keyup="onType()" @focus="onFocus()" @blur="onBlur()" autocomplete="on">
@@ -9,7 +9,7 @@
             </div>
         </div>
 
-        <div class="input-error" v-visible="error !== 'N/A'" v-if="position === 'bottom'">{{error }}</div>
+        <div class="input-error" v-visible="error !== 'N/A'" v-if="(position === 'bottom') && (errorDisplay === 'true')">{{error }}</div>
   </div>
 </template>
 
@@ -24,6 +24,7 @@ export default class TextInputComponent extends Vue {
     @Prop({default: 'light'}) public theme: string|undefined;
     @Prop({default: 'fixed'}) public layout: string|undefined;
     @Prop({default: '0em 0em'}) public paddings: string|undefined;
+    @Prop({default: 'true'}) public errorDisplay: string|undefined;
     @Prop({default: 'bottom'}) public position: string|undefined;
     @Prop({default: ''}) private error: string|undefined;
 
@@ -45,12 +46,12 @@ export default class TextInputComponent extends Vue {
 
     private onFocus(): void {
         this.$store.dispatch('setKeyboardIsOpen', true);
-        this.inTheme = 'theme-light';
+        this.inTheme = this.theme != 'light' ? 'theme-clear' : 'theme-light';
     }
 
     private onBlur(): void {
         this.$store.dispatch('setKeyboardIsOpen', false);
-        this.inTheme = this.text.length > 0 ? 'theme-light' : 'theme-none' ;
+        this.inTheme = this.text.length > 0 ? (this.theme != 'light' ? 'theme-clear' : 'theme-light') : 'theme-none' ;
     }
 
     private getInputWrapperClass(): string {
@@ -134,6 +135,11 @@ div.input{
 
         &.theme-light{
             background-color:white;
+        }
+        &.theme-clear{
+            background-color: none;
+            letter-spacing: 2px;
+            color:black;
         }
     }
 

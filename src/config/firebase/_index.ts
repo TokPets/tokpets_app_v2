@@ -16,6 +16,8 @@ const firestore = firebase.firestore();
 const fireauth = firebase.auth();
 (window as any).fireauth = fireauth;
 
+const fireastorage = firebase.storage();
+(window as any).firestorage = fireastorage;
 /*
 const messaging = firebase.messaging();
 (window as any).messaging = messaging;

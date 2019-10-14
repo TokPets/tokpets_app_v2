@@ -24,16 +24,16 @@ export const LOGIN_SIGNUP_ROUTES = [
       )
   },
   {
-    path: '/login/signup/pet',
+    path: '/login/signup/pet/code/:code/type/:type/name/:name/gender/:gender/birthday/:brithday/breed/:breed/country/:country/city/:city/',
     name: 'signup/pet',
     component: () =>
       import(
-        /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.view.vue'
+        /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.pet.view.vue'
       )
   },
   {
     path: '/login/signup/user',
-    name: 'signup/pet',
+    name: 'signup/user',
     component: () =>
       import(
         /* webpackChunkName: "about" */ './../../views/login.view/login.signup.view/login.signup.view.vue'

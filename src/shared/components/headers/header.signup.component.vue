@@ -16,13 +16,22 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component({})
 export default class HeaderSignUpComponent extends Vue {
      @Prop({default: 'light'}) public theme: string|undefined;
+     @Prop({default: true}) public navigation: boolean|undefined;
      
      goBack(){
-        this.$router.go(-1)
+         if(this.navigation){
+            this.$router.go(-1)
+         }else{
+             this.$emit('back');
+         }
      }
 
      goHome(){
-         this.$router.push(`/`);
+         if(this.navigation){
+            this.$router.push(`/`);
+         }else{
+             this.$emit('home');
+         }
      }
 }
 </script>

@@ -1,7 +1,11 @@
+import state from './state/index';
+import getters from './getters/index';
+import mutations from './mutations/index';
+import actions from './actions/index';
+
 export default {
-    namespaced: true,
-    state: {},
-    getters: {},
-    mutations: {},
-    actions: {},
+    state,
+    getters,
+    mutations,
+    actions,
 };
